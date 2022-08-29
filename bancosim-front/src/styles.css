@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: linear-gradient(180deg,black 60%, gray 100%);
+}
+
+nav, ul, li, a, span, .goldcolor{
+    color: black;
+    font-weight: bold;
+    background-color: darkgoldenrod;
+    align-items: center;
+    justify-content: center;
+}
+div ul li ul{
+    color: black;
+    font-weight: bold;
+    background-color: darkgoldenrod;
+    align-items: center;
+    justify-content: center;
+}
+.btnprincipal{
+    margin-left: 140px;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body class="home">
+  <div class="home-name">
+    <p>BancoSim</p>
+  </div>
+  <div class="contenedor">
+    <form class="was-validated" [formGroup]="formlogin">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Email*</label>
+        <input type="email" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" required
+          formControlName="email">
+
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Password*</label>
+        <input type="text" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" required
+          formControlName="password">
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-dark" type="submit">LOG IN</button>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

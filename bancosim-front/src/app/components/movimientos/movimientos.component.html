@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p class="descriptiontransaction">Movimientos</p>
+    <div class="contenedor">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Cuenta</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Destino</th>
+            <th scope="col">Fecha</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="movimientos && movimientos.length > 0">
+          <tr *ngFor="let item of movimientos">
+            <th scope="row">{{item._id | slice: 0 : 10}}</th>
+            <td>{{item.cuenta}}</td>
+            <td>{{item.valor}}</td>
+            <td>{{item.tipo}}</td>
+            <td>{{item.destino}}</td>
+            <td>{{item.fecha}}</td>
+          </tr>
+        </tbody>
+      </table> 
+    </div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+.home {
+    background-image: url('/assets/images/home-magic.png');
+    background-size: 1100px;
+    background-position: 350px;
+    background-repeat: no-repeat;
+}
+
+.contenedor {
+    padding: 20px;
+    float: left;
+    border-radius: 20px;
+    margin-top: 230px;
+    width: 450px;
+    height: 300px;
+    background-color: darkgoldenrod;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: absolute;
+    margin-left: 120px;
+
+}
+
+.home-name{
+    float: left;
+    margin-left: 80px;
+    margin-top: 10px;
+    font-size: 120px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

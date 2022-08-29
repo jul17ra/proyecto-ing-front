@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p class="descriptiontransaction">Actualiza tus credenciales</p>
+
+    <div class="contenedor">
+        <form class="was-validated" [formGroup]="formedit">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1 validationTextarea" class="form-label"
+                    style="font-weight: bold">Ingresa tu nuevo correo</label>
+                <input type="email" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea"
+                    required formControlName="email">
+
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlInput1 validationTextarea" class="form-label"
+                    style="font-weight: bold">Ingresa tu nueva contraseña*</label>
+                <input type="text" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea"
+                    required formControlName="password">
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-dark" type="submit">ACTUALIZAR</button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
