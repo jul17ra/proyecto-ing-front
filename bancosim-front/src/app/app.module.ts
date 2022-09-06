@@ -13,6 +13,10 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovimientosComponent } from './components/movimientos/movimientos.component';
 import { EditaccountComponent } from './components/editaccount/editaccount.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
+import { LogoutComponent } from './components/logout/logout.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,7 +27,8 @@ import { EditaccountComponent } from './components/editaccount/editaccount.compo
     TransactionsComponent,
     RegisterComponent,
     MovimientosComponent,
-    EditaccountComponent
+    EditaccountComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +37,10 @@ import { EditaccountComponent } from './components/editaccount/editaccount.compo
     MatCardModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatCheckboxModule,
+    MatDialogModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

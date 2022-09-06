@@ -30,3 +30,12 @@
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.example-h2 {
+    margin: 10px;
+  }
+  
+  .example-margin {
+    margin: 0 10px;
+    color: black;
+    size: 80px;
+  }

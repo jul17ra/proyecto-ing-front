@@ -1,10 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: linear-gradient(180deg,black 60%, gray 100%);
+html, body { height: 100% ; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: linear-gradient(180deg, rgba(0,0,0,1) 60%, rgba(128,128,128,1) 100%);
+
 }
 
-nav, ul, li, a, span, .goldcolor{
+nav, a, .goldcolor{
     color: black;
     font-weight: bold;
     background-color: darkgoldenrod;
