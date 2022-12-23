@@ -17,6 +17,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
 import { LogoutComponent } from './components/logout/logout.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InitComponent } from './components/init/init.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterComponent,
     MovimientosComponent,
     EditaccountComponent,
-    LogoutComponent
+    LogoutComponent,
+    InitComponent
   ],
   imports: [
     BrowserModule,

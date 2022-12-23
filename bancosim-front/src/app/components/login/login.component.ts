@@ -1,7 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { FinalUserService } from 'src/app/services/final-user.service';
 import { HttpService } from 'src/app/services/http.service';
-
 
 @Component({
   selector: 'app-login',
@@ -11,29 +12,35 @@ import { HttpService } from 'src/app/services/http.service';
 export class LoginComponent implements OnInit {
 
   public formlogin: FormGroup
-  public email: AbstractControl
-  public password: AbstractControl
-  public mantener: boolean = false
 
-  constructor(
-    public formBuilder: FormBuilder,
-    public http:HttpService
-  ) { 
+  constructor(public formBuilder: FormBuilder, public http: HttpService, private userService: FinalUserService, private httpService: HttpClient) {
     this.formlogin = this.formBuilder.group(
       {
-        email: ['', Validators.required],
+        identification: ['', Validators.required],
         password: ['', Validators.required],
-        mantener :[''],
+        keepping: [false],
       }
     )
-    this.email = this.formlogin.controls['email']
-    this.password = this.formlogin.controls['password']
+    // httpService.post('http://'+ environment.api + '/user/login',{
+    //   idType: '01',
+    //   identification: '1032484364',
+    //   password: 'Alex123$'
+    // }).subscribe(data=>console.log(data),err=>console.log(err))
 
-    http.apiget("https://pokeapi.co/api/v2/pokemon/ditto")
+    //http.apiGet("https://pokeapi.co/api/v2/pokemon/ditto")
   }
-  
 
-  ngOnInit(): void {
+
+  ngOnInit() {
+
+  }
+
+  submit() {
+    console.log(this.formlogin.controls['identification'].value);
+    console.log(this.formlogin.controls['password'].value);
+    this.userService.login(this.formlogin.controls['identification'].value, this.formlogin.controls['password'].value).subscribe(res => {
+      console.log(res)
+    });
   }
 
 }

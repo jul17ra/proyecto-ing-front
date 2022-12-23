@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Content } from '@angular/compiler/src/render3/r3_ast';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  token!: string
+  token!: string;
+  res!: any;
   constructor(
     private http: HttpClient,
 
@@ -15,18 +18,34 @@ export class HttpService {
 
   }
 
-  apiAuthentication(url:string, data: any){
-    return this.http.post(url , data)
-    .subscribe((apiData:any) => (console.log(apiData.headers)));
+  apiAuthentication(api:string, data: any){
+    let response: any;
+    return this.http.post('http://' + environment.api + api , data)
   }
 
-  apiget(url: string) {
+  apiGet(api: string) {
     // atob(sessionStorage.getItem('token') + '')
+    let response;
     this.http
-      .get(url, {
-        headers: { 'Authentication': this.token }
+      .get(environment.api + api, {
+        headers: { 'Authorization': this.token }
       })
-      .subscribe(apiData => (console.log(apiData)));
+      .subscribe(apiData => {console.log(apiData); response = apiData});
+      return response;
+  }
+
+  apiPost(api: string, data:any) {
+    // atob(sessionStorage.getItem('token') + '')
+    let response;
+    console.log('http://'+environment.api + api);
+    this.http
+      .post(environment.api + api, data, {
+        headers: { 'Authorization': this.token , 'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': '*'}
+      })
+      .subscribe(apiData => {console.log(apiData); response = apiData});
+      debugger
+      return response;
   }
 }
 

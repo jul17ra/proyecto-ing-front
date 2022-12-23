@@ -6,6 +6,7 @@ import { TransactionsComponent } from './components/transactions/transactions.co
 import { RegisterComponent } from './components/register/register.component';
 import { MovimientosComponent } from './components/movimientos/movimientos.component';
 import { EditaccountComponent } from './components/editaccount/editaccount.component';
+import { InitComponent } from './components/init/init.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: "edit",
     component: EditaccountComponent
+  },
+  {
+    path: 'init',
+    component: InitComponent
   }
 ];
 
