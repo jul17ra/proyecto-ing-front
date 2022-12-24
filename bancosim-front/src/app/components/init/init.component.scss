@@ -1,15 +1,31 @@
+.title-position{
+    margin-top: 2em;
+    margin-left: 2em;
+}
+
+.title-accounts-cards{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 30px;
+    font-weight: 500px;
+    color: #CACFD2;
+}
+
 .contenedor {
     padding: 20px;
     float: left;
     border-radius: 20px;
-    margin: 10% 5% ;
-    width: 400px;
+    margin-top: 2em;
+    margin-left: 2em;
+    width: 350px;
     height: 200px;
     background-color: darkgoldenrod;
     justify-content: center;
     align-items: center;
     align-content: center;
     position: relative;
+    &:hover{
+        background-color: rgb(233, 169, 6);
+    }
 }
 
 .items {
@@ -24,11 +40,18 @@
     color: #000;
 }
 
+.label_balance{
+    margin-left: 8em;
+    font-size: 15px;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    color: #1B2631;
+}
+
 .disp {
     padding-left: 40px;
 }
 
 .icon_account {
-    height: 100px;
+    height: 80px;
 }
 

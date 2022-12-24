@@ -18,6 +18,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { LogoutComponent } from './components/logout/logout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InitComponent } from './components/init/init.component';
+import { ContainerComponent } from './container/container.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { InitComponent } from './components/init/init.component';
     MovimientosComponent,
     EditaccountComponent,
     LogoutComponent,
-    InitComponent
+    InitComponent,
+    ContainerComponent
   ],
   imports: [
     BrowserModule,
