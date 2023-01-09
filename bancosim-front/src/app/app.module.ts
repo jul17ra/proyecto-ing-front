@@ -19,6 +19,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InitComponent } from './components/init/init.component';
 import { ContainerComponent } from './container/container.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ContainerComponent } from './container/container.component';
     EditaccountComponent,
     LogoutComponent,
     InitComponent,
-    ContainerComponent
+    ContainerComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
