@@ -1,27 +1,38 @@
-<body class="home">
+
   <div class="home-name">
     <p>BancoSim</p>
   </div>
-  <div class="contenedor">
-    <form class="was-validated" [formGroup]="formlogin">
-      <div class="mb-3">
-        <label class="form-label"
-          style="font-weight: bold">Identificación</label>
-        <input type="number" class="form-control in-invalid" id="id" required
-          formControlName="identification" [max]="999999999999">
-      </div>
-      <div class="mb-3">
-        <label class="form-label"
-          style="font-weight: bold">Password</label>
-        <input type="password" class="form-control in-invalid" id="pass" required
-          formControlName="password">
-      </div>
-      <mat-checkbox class="example-margin" formControlName="keepping">Mantener la sesión iniciada</mat-checkbox>
+  <div class="ancho">
 
-      <div class="mb-3">
-        <button class="btn btn-dark" type="submit" (click)="submit()">Log In</button>
-      </div>
-    </form>
+
+  <div class="contenedor">
+    <div class="objects"> 
+      <form class="was-validated" [formGroup]="formlogin">
+        <div class="mb-3">
+          <label class="form-label"
+            style="font-weight: bold">Identificación</label>
+          <input type="number" class="form-control in-invalid" id="id" required
+            formControlName="identification" [max]="999999999999">
+        </div>
+        <div class="mb-3">
+          <label class="form-label"
+            style="font-weight: bold">Password</label>
+          <input type="password" class="form-control in-invalid" id="pass" required
+            formControlName="password">
+        </div>
+        <mat-checkbox class="example-margin" formControlName="keepping">Mantener la sesión iniciada</mat-checkbox>
+  
+        <div class="mb-3">
+          <button class="btn btn-dark" type="submit" (click)="submit()">Log In</button>
+        </div>
+      </form>
+
+    </div>
+
   </div>
-</body>
+  <div class="home">
+    <img src="/assets/images/home-magic.png" alt="">
+  </div>
+</div>
+
 
