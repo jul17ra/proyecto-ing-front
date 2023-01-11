@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
+import { IUserLoginRequest, IUserLoginResponse } from '../Interfaces/UserLogin.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,9 @@ export class HttpService {
 
   }
 
-  apiAuthentication(api:string, data: any){
-    let response: any;
-    return this.http.post('http://' + environment.api + api , data)
+  apiAuthentication(api:string, data: IUserLoginRequest){
+    const response = this.http.post('http://' + environment.api + api , data);
+    return response;
   }
 
   apiGet(api: string) {
@@ -43,8 +44,7 @@ export class HttpService {
         headers: { 'Authorization': this.token , 'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': '*'}
       })
-      .subscribe(apiData => {console.log(apiData); response = apiData});
-      debugger
+      .subscribe(apiData => {response = apiData});
       return response;
   }
 }
