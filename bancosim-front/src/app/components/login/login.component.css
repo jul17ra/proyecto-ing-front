@@ -6,7 +6,7 @@
 .home img {
     position: relative;
     display: flex;
-    height: 700px;
+    height: auto;
     width: auto;
     margin-top: 140px;
 }
