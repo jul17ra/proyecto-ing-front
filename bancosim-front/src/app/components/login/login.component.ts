@@ -35,10 +35,10 @@ export class LoginComponent implements OnInit {
       identification: this.formlogin.controls['identification'].value,
       password: this.formlogin.controls['password'].value
     };
-    this.userService.login(dataUserLogin).subscribe(res => {
-      const auth = res.headers.get('Authorization');
-      console.log(auth);
-      console.log(res);
+    this.userService.login(dataUserLogin).subscribe((res: any) => {
+      console.log(res.body);
+      sessionStorage.setItem('token', btoa(res.body.auth));
+      console.log(atob(sessionStorage.getItem('token')+''))
     });
   }
 

@@ -16,16 +16,14 @@ export class HttpService {
 
   ) {
     this.token = atob(sessionStorage.getItem('token') + '')
-
   }
 
   apiAuthentication(api:string, data: IUserLoginRequest){
-    const response = this.http.post('http://' + environment.api + api , data, {observe: 'response'});
-    return response;
+    return this.http.post('http://' + environment.api + api , data, {observe: 'response'});
   }
 
   apiGet(api: string) {
-    // atob(sessionStorage.getItem('token') + '')
+    this.token = atob(sessionStorage.getItem('token') + '')
     let response;
     this.http
       .get(environment.api + api, {
@@ -36,7 +34,7 @@ export class HttpService {
   }
 
   apiPost(api: string, data:any) {
-    // atob(sessionStorage.getItem('token') + '')
+    this.token = atob(sessionStorage.getItem('token') + '')
     let response;
     console.log('http://'+environment.api + api);
     this.http
