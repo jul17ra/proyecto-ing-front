@@ -36,7 +36,9 @@ export class LoginComponent implements OnInit {
       password: this.formlogin.controls['password'].value
     };
     this.userService.login(dataUserLogin).subscribe(res => {
-      console.log(res)
+      const auth = res.headers.get('Authorization');
+      console.log(auth);
+      console.log(res);
     });
   }
 

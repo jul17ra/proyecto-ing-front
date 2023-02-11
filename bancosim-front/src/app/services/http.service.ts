@@ -20,7 +20,7 @@ export class HttpService {
   }
 
   apiAuthentication(api:string, data: IUserLoginRequest){
-    const response = this.http.post('http://' + environment.api + api , data);
+    const response = this.http.post('http://' + environment.api + api , data, {observe: 'response'});
     return response;
   }
 
