@@ -14,10 +14,9 @@ export class NavbarComponent implements OnInit {
   private finalUserData!: FinalUser;
   public dataUser: boolean = false;
 
-  constructor(public common: CommonService, public router:Router) { }
+  constructor(public common: CommonService, public router:Router,) { }
 
   ngOnInit(): void {
-    this.common.select().subscribe(res => this.finalUserData = res);
     this.dataUser = this.finalUserData ? true : false;
     console.log(this.finalUserData);
   }
@@ -25,7 +24,6 @@ export class NavbarComponent implements OnInit {
   logOut(){
     console.log('logout')
     let finalUser!: FinalUser;
-    this.common.next(finalUser);
     sessionStorage.clear();
     this.router.navigate([''])
   }
