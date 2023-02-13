@@ -12,4 +12,8 @@ export class FinalUserService {
   login(userLoginRequest: IUserLoginRequest) {
      return this.httpCore.apiAuthentication('/user/login', userLoginRequest);
   }
+
+  getUserIntoSession() {
+    return this.httpCore.apiPost('/user/getUserToken','')
+  }
 }

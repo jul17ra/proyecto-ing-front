@@ -19,7 +19,7 @@ export class HttpService {
   }
 
   apiAuthentication(api:string, data: IUserLoginRequest){
-    return this.http.post('http://' + environment.api + api , data, {observe: 'response'});
+    return this.http.post(`http://${environment.api}${api}`, data, {observe: 'response'});
   }
 
   apiGet(api: string) {
@@ -27,7 +27,7 @@ export class HttpService {
     let response;
     this.http
       .get(environment.api + api, {
-        headers: { 'Authorization': this.token }
+        headers: { 'Authorization': `Bearer ${this.token}` }
       })
       .subscribe(apiData => {console.log(apiData); response = apiData});
       return response;
@@ -35,15 +35,11 @@ export class HttpService {
 
   apiPost(api: string, data:any) {
     this.token = atob(sessionStorage.getItem('token') + '')
-    let response;
-    console.log('http://'+environment.api + api);
-    this.http
-      .post(environment.api + api, data, {
-        headers: { 'Authorization': this.token , 'Access-Control-Allow-Origin': '*',
+    return this.http
+      .post(`http://${environment.api}${api}`, data, {
+        headers: { 'Authorization': `Bearer ${this.token}` , 'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': '*'}
       })
-      .subscribe(apiData => {response = apiData});
-      return response;
   }
 }
 
