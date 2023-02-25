@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { IUserLoginRequest } from 'src/app/Interfaces/UserLogin.interface';
 import { FinalUserDTO } from 'src/app/model/DTOs/FinalUserDTO.interface';
+import { FinalUser } from 'src/app/model/FinalUser.interface';
 import { CommonService } from 'src/app/services/common.service';
 import { FinalUserService } from 'src/app/services/final-user.service';
 import { HttpService } from 'src/app/services/http.service';
@@ -14,7 +15,8 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class LoginComponent implements OnInit {
 
-  public formlogin: FormGroup
+  public formlogin: FormGroup;
+  @Output() eventLogin = new EventEmitter<FinalUser>();
 
   constructor(public formBuilder: FormBuilder, public http: HttpService, private userService: FinalUserService, public router:Router, public common: CommonService) {
     this.formlogin = this.formBuilder.group(
@@ -41,7 +43,8 @@ export class LoginComponent implements OnInit {
       let dataRes: FinalUserDTO = res.body;
       console.log('user login :' , dataRes.finalUser);
       sessionStorage.setItem('token', btoa(dataRes.auth));
-      this.router.navigate(['init']);
+      this.eventLogin.emit(dataRes.finalUser);
+      this.router.navigate(['init'], {state: {...dataRes.finalUser}});
     });
   }
 

@@ -1,29 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { FinalUser } from 'src/app/model/FinalUser.interface';
-import { CommonService } from 'src/app/services/common.service';
-import { FinalUserService } from 'src/app/services/final-user.service';
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnChanges {
 
-  private finalUserData!: FinalUser;
+  @Input() public finalUserData!: FinalUser;
+  finalUser! :FinalUser; 
   public dataUser: boolean = false;
 
-  constructor(public common: CommonService, public router:Router,) { }
-
-  ngOnInit(): void {
-    this.dataUser = this.finalUserData ? true : false;
-    console.log(this.finalUserData);
+  constructor(public router:Router) { 
+    console.log(this.dataUser);
   }
 
-  logOut(){
+  ngOnChanges(changes: SimpleChanges): void {
+    if(changes['finalUserData']){
+      this.dataUser = this.finalUserData ? true : false;
+      if(this.finalUserData){
+        this.finalUser = this.finalUserData // Se setea la data en una variable por si finalUserData cambia en tiempo de ejecución a undefined.
+        console.log(this.finalUser);
+      }
+    }
+  }
+
+  ngOnInit(): void {
+
+  }
+
+  logOut(): void{
     console.log('logout')
-    let finalUser!: FinalUser;
     sessionStorage.clear();
     this.router.navigate([''])
   }
