@@ -1,42 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+<div>
 
-<body class="home">
+
   <div class="home-name">
-    <p>BancoSim</p>
+    <p class="font-home-title">BancoSim</p>
   </div>
   <div class="contenedor">
-    <form class="was-validated" [formGroup]="formlogin">
-      <div class="mb-3">
-        <label for="exampleFormControlInput1 validationTextarea" class="form-label"
-          style="font-weight: bold">Email*</label>
-        <input type="email" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" required
-          formControlName="email">
+    <div class="objects"> 
+      <form class="was-validated" [formGroup]="formlogin">
+        <div class="mb-3">
+          <label class="form-label"
+            style="font-weight: bold">Identificación</label>
+          <input type="number" class="form-control in-invalid" id="id" required
+            formControlName="identification" [max]="999999999999">
+        </div>
+        <div class="mb-3">
+          <label class="form-label"
+            style="font-weight: bold">Password</label>
+          <input type="password" class="form-control in-invalid" id="pass" required
+            formControlName="password">
+        </div>
+        <mat-checkbox class="example-margin" formControlName="keepping">Mantener la sesión iniciada</mat-checkbox>
+  
+        <div class="mb-3">
+          <button class="btn btn-dark" type="submit" (click)="submit()">Log In</button>
+        </div>
+      </form>
 
-      </div>
-      <div class="mb-3">
-        <label for="exampleFormControlInput1 validationTextarea" class="form-label"
-          style="font-weight: bold">Password*</label>
-        <input type="text" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" required
-          formControlName="password">
-      </div>
-      <mat-checkbox class="example-margin" formControlName="mantener">Mantener la sesión iniciada</mat-checkbox>
+    </div>
 
-      <div class="mb-3">
-        <button class="btn btn-dark" type="submit">LOG IN</button>
-      </div>
-
-
-
-    </form>
   </div>
-</body>
+  <div class="home">
+    <img src="/assets/images/home-magic.png" alt="">
+  </div>
+</div>
 
-</html>
+

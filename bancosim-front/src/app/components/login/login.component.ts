@@ -1,7 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Router } from '@angular/router';
+import { IUserLoginRequest } from 'src/app/Interfaces/UserLogin.interface';
+import { FinalUserDTO } from 'src/app/model/DTOs/FinalUserDTO.interface';
+import { FinalUser } from 'src/app/model/FinalUser.interface';
+import { CommonService } from 'src/app/services/common.service';
+import { FinalUserService } from 'src/app/services/final-user.service';
 import { HttpService } from 'src/app/services/http.service';
-
 
 @Component({
   selector: 'app-login',
@@ -10,30 +15,37 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class LoginComponent implements OnInit {
 
-  public formlogin: FormGroup
-  public email: AbstractControl
-  public password: AbstractControl
-  public mantener: boolean = false
+  public formlogin: FormGroup;
+  @Output() eventLogin = new EventEmitter<FinalUser>();
 
-  constructor(
-    public formBuilder: FormBuilder,
-    public http:HttpService
-  ) { 
+  constructor(public formBuilder: FormBuilder, public http: HttpService, private userService: FinalUserService, public router:Router, public common: CommonService) {
     this.formlogin = this.formBuilder.group(
       {
-        email: ['', Validators.required],
+        identification: ['', Validators.required],
         password: ['', Validators.required],
-        mantener :[''],
+        keepping: [false],
       }
     )
-    this.email = this.formlogin.controls['email']
-    this.password = this.formlogin.controls['password']
-
-    http.apiget("https://pokeapi.co/api/v2/pokemon/ditto")
   }
-  
 
-  ngOnInit(): void {
+
+  ngOnInit() {
+
+  }
+
+  submit() {
+    const dataUserLogin: IUserLoginRequest = {
+      idType: '01',
+      identification: this.formlogin.controls['identification'].value,
+      password: this.formlogin.controls['password'].value
+    };
+    this.userService.login(dataUserLogin).subscribe((res: any) => {
+      let dataRes: FinalUserDTO = res.body;
+      console.log('user login :' , dataRes.finalUser);
+      sessionStorage.setItem('token', btoa(dataRes.auth));
+      this.eventLogin.emit(dataRes.finalUser);
+      this.router.navigate(['init'], {state: {...dataRes.finalUser}});
+    });
   }
 
 }

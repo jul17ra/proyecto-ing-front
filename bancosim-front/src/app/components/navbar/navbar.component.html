@@ -1,0 +1,28 @@
+<header class="header">
+    <div class="logo">
+        <label for="" class="title-logo">BancoSim</label>
+        <img src="/assets/images/logo.png" alt="">
+    </div>
+    <nav>
+        <ul class="nav-links">
+            <li><a href="">Inicio</a></li>
+            <li><a class="nav-item dropdown-toggle btnprincipal" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">Cuentas</a>
+                <ul class="dropdown-menu btnprincipal goldcolor" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/account">Ver productos</a></li>
+                    <li><a class="dropdown-item" href="/edit">Configuración</a></li>
+                </ul>
+            </li>
+            <li><a class="nav-item dropdown-toggle btnprincipal" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">Transacciones</a>
+                <ul class="dropdown-menu btnprincipal goldcolor" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/transactions/1">Transferir</a></li>
+                    <li><a class="dropdown-item" href="/transactions/2">Pagar productos</a></li>
+                    <li><a class="dropdown-item" href="/transactions/3">Pagar Facturas</a></li>
+                </ul>
+            </li>
+            <li *ngIf="!dataUser"><a href="#">Registro</a></li>
+            <li *ngIf="dataUser"><a (click)="logOut()">Log Out</a></li>
+        </ul>
+    </nav>
+</header>

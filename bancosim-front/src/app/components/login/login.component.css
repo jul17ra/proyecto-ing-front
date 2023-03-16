@@ -1,8 +1,19 @@
 .home {
-    background-image: url('/assets/images/home-magic.png');
-    background-size: 1100px;
-    background-position: 350px;
-    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+}
+
+.home img {
+    position: relative;
+    display: flex;
+    height: 600px;
+    width: auto;
+    margin-top: 140px;
+    margin-left: -250px;
+}
+
+.objects {
+    display: flex;
 }
 
 .contenedor {
@@ -16,26 +27,29 @@
     justify-content: center;
     align-items: center;
     align-content: center;
-    position: absolute;
-    margin-left: 120px;
-
+    margin-left: -120px;
 }
 
 .home-name{
     float: left;
     margin-left: 80px;
-    margin-top: 10px;
+    margin-top: 50px;
     font-size: 120px;
     font-weight: bold;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.font-home-title{
+    font-size: 50px;
+}
+
 .example-h2 {
     margin: 10px;
-  }
+}
   
-  .example-margin {
+.example-margin {
     margin: 0 10px;
     color: black;
     size: 80px;
-  }
+}

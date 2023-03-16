@@ -6,35 +6,41 @@ import { TransactionsComponent } from './components/transactions/transactions.co
 import { RegisterComponent } from './components/register/register.component';
 import { MovimientosComponent } from './components/movimientos/movimientos.component';
 import { EditaccountComponent } from './components/editaccount/editaccount.component';
+import { InitComponent } from './components/init/init.component';
+import { URLS } from './const/URLS';
 
 const routes: Routes = [
   {
-    path: "login",
+    path: `${URLS.LOGIN}`,
     component:LoginComponent
   },
   {
-    path: "account",
+    path: `${URLS.ACOUNT}`,
     component: AccountComponent
   },
   {
-    path: "transactions/:a",
+    path: `${URLS.TRANSACTIONS}/:a`,
     component: TransactionsComponent
   },
   {
-    path: "register",
+    path: `${URLS.REGISTER}`,
     component: RegisterComponent
   },
   {
-    path: "",
+    path: ``,
     component: LoginComponent
   },
   {
-    path: "movimientos/:c",
+    path: `${URLS.MOVEMENTS}/:c`,
     component: MovimientosComponent
   },
   {
-    path: "edit",
+    path: `${URLS.EDIT}`,
     component: EditaccountComponent
+  },
+  {
+    path: `${URLS.INIT}`,
+    component: InitComponent
   }
 ];
 

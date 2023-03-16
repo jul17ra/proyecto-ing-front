@@ -9,10 +9,10 @@ import { LogoutComponent } from './components/logout/logout.component';
 })
 export class AppComponent {
   title = 'bancosim-front';
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
 
   openDialog() {
-this.dialog.open(LogoutComponent)
+    this.dialog.open(LogoutComponent)
   }
 }
 
