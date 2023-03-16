@@ -12,12 +12,13 @@ export class InitComponent implements OnInit {
   finalUser!: FinalUser;
 
   constructor(public router: Router) {
-    this.finalUser = this.router.getCurrentNavigation()?.extras.state as FinalUser;
+    this.finalUser = this.router.getCurrentNavigation()?.extras.state ? this.router.getCurrentNavigation()?.extras.state as FinalUser : this.finalUser;
     if(!sessionStorage.getItem('token')){
       sessionStorage.clear();
       this.router.navigate(['']);
       return;
     }
+    console.log('User: ', this.finalUser);
   }
 
   ngOnInit(): void {
