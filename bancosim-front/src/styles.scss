@@ -40,3 +40,9 @@ div ul li ul {
 .btnprincipal {
     margin-left: 140px;
 } */
+
+.mat-checkbox-indeterminate, .mat-checkbox-checked {
+    &.mat-primary .mat-checkbox-background {
+      background-color: #212529 !important;
+    }
+}

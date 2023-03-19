@@ -11,26 +11,32 @@ import { HttpService } from 'src/app/services/http.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
   public formlogin: FormGroup;
   @Output() eventLogin = new EventEmitter<FinalUser>();
+  private keepSession = false;
 
   constructor(public formBuilder: FormBuilder, public http: HttpService, private userService: FinalUserService, public router:Router, public common: CommonService) {
     this.formlogin = this.formBuilder.group(
       {
         identification: ['', Validators.required],
-        password: ['', Validators.required],
-        keepping: [false],
+        password: ['', Validators.required]
       }
     )
   }
 
 
   ngOnInit() {
-
+    const token = sessionStorage.getItem('token') ? atob(sessionStorage.getItem('token')!): false;
+    if(token){
+      this.userService.getUserIntoSession().subscribe((res: any) => {
+        console.log(res);
+        this.router.navigate(['init'], {state: {...res}});
+      });
+    }
   }
 
   submit() {
@@ -42,10 +48,20 @@ export class LoginComponent implements OnInit {
     this.userService.login(dataUserLogin).subscribe((res: any) => {
       let dataRes: FinalUserDTO = res.body;
       console.log('user login :' , dataRes.finalUser);
-      sessionStorage.setItem('token', btoa(dataRes.auth));
       this.eventLogin.emit(dataRes.finalUser);
+      if(this.keepSession){
+        sessionStorage.setItem('token', btoa(dataRes.auth));
+      }
       this.router.navigate(['init'], {state: {...dataRes.finalUser}});
     });
+  }
+
+  /**
+   * Evento para mantener sesión iniciada.
+   * @param check 
+   */
+  _keepSession(check:boolean): void{
+    this.keepSession = check;
   }
 
 }

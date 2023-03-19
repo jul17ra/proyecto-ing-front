@@ -13,7 +13,7 @@ export class InitComponent implements OnInit {
 
   constructor(public router: Router) {
     this.finalUser = this.router.getCurrentNavigation()?.extras.state ? this.router.getCurrentNavigation()?.extras.state as FinalUser : this.finalUser;
-    if(!sessionStorage.getItem('token')){
+    if(!this.finalUser){
       sessionStorage.clear();
       this.router.navigate(['']);
       return;
