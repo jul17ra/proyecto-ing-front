@@ -8,6 +8,6 @@
     <div class="items"> <label for="" id="title_card" class="label_title">{{account.acount.name}}</label> </div>
     <label class="label_balance" for="" id="saldo_init">Saldo disponible:</label>
     <br>
-    <img src="https://cdn-icons-png.flaticon.com/512/1611/1611179.png" class="icon_account" alt="">
+    <img [src]="account.acount.type_acount.icon" class="icon_account" alt="">
     <label class="label_title disp" for="" id="saldo_disp">${{account.acount.amount}}</label>
 </div>

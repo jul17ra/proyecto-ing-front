@@ -1,4 +1,5 @@
 export interface ITypeAccount {
     id: number,
-    name: string
+    name: string,
+    icon: string
 } 
