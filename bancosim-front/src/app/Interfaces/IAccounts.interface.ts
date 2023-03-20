@@ -5,5 +5,5 @@ export interface IAccounts {
     name: string,
     amount: string,
     number: string,
-    type_acount: ITypeAccount
+    typeAcount: ITypeAccount
 }

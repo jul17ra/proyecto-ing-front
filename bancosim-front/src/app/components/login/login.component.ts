@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
     if(token){
       this.userService.getUserIntoSession().subscribe((res: any) => {
         console.log(res);
-        this.router.navigate(['init'], {state: {...res}});
+        this.router.navigate(['init']);
       });
     }
   }
