@@ -4,7 +4,7 @@
     margin-top: 30px;
     width: 450px;
     height: 380px;
-    background-color: darkgoldenrod;
+    background-color: goldenrod;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -19,4 +19,5 @@
     font-weight: bold;
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 20px;
 }

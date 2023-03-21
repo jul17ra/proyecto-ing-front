@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { IUserLoginRequest } from 'src/app/Interfaces/UserLogin.interface';
 import { FinalUserDTO } from 'src/app/model/DTOs/FinalUserDTO.interface';
 import { FinalUser } from 'src/app/model/FinalUser.interface';
-import { CommonService } from 'src/app/services/common.service';
 import { FinalUserService } from 'src/app/services/final-user.service';
 import { HttpService } from 'src/app/services/http.service';
 
@@ -19,7 +18,7 @@ export class LoginComponent implements OnInit {
   @Output() eventLogin = new EventEmitter<FinalUser>();
   private keepSession = false;
 
-  constructor(public formBuilder: FormBuilder, public http: HttpService, private userService: FinalUserService, public router:Router, public common: CommonService) {
+  constructor(public formBuilder: FormBuilder, public http: HttpService, private userService: FinalUserService, public router:Router) {
     this.formlogin = this.formBuilder.group(
       {
         identification: ['', Validators.required],
@@ -27,7 +26,6 @@ export class LoginComponent implements OnInit {
       }
     )
   }
-
 
   ngOnInit() {
     const token = sessionStorage.getItem('token') ? atob(sessionStorage.getItem('token')!): false;
@@ -49,10 +47,11 @@ export class LoginComponent implements OnInit {
       let dataRes: FinalUserDTO = res.body;
       console.log('user login :' , dataRes.finalUser);
       this.eventLogin.emit(dataRes.finalUser);
+      sessionStorage.setItem('token', btoa(dataRes.auth));
       if(this.keepSession){
-        sessionStorage.setItem('token', btoa(dataRes.auth));
+        localStorage.setItem('token', btoa(dataRes.auth));
       }
-      this.router.navigate(['init'], {state: {...dataRes.finalUser}});
+      this.router.navigate(['init']);
     });
   }
 
