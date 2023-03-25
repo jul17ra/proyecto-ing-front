@@ -51,4 +51,10 @@ export class TransactionsComponent implements OnInit {
     }
     )
   }
+
+  submit(): void {
+    console.log('origen', this.formtransaction.value.origen);
+    console.log('destino: ', this.formtransaction.value.destino);
+    console.log('valor: ', this.formtransaction.value.valor);
+  }
 }

@@ -23,7 +23,9 @@ export class ContainerComponent implements OnInit {
 
   data(data:any):void {
     console.log(data);
-    this.dataUser = data.finalUser;
+    if(data.finalUser){
+      this.dataUser = data.finalUser;
+    }
     console.log('this.dataUser: ', this.dataUser);
   }
 
