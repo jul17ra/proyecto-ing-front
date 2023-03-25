@@ -18,14 +18,13 @@ export class InitComponent implements OnInit {
   private token!: string | boolean;
 
   constructor(public router: Router, private userService: FinalUserService, private userAccountService: UserAccountService, private commonsService: CommonsService) {
-
+    this.finalUser = this.router.getCurrentNavigation()?.extras.state ? this.router.getCurrentNavigation()?.extras.state as FinalUser : this.finalUser;
   }
 
   async ngOnInit(): Promise<void> {
-    // this.finalUser = this.router.getCurrentNavigation()?.extras.state ? this.router.getCurrentNavigation()?.extras.state as FinalUser : this.finalUser;
     this.token = sessionStorage.getItem('token') ? atob(sessionStorage.getItem('token')!) : false;
     this.commonsService.validIntoSession(); //Valido que continuo dentro de la sesión.
-    if (this.token && !this.finalUser) {
+    if (this.token) {
       await this.userService.getUserIntoSession().subscribe(async (res: any) => {
         console.log(res);
         this.finalUser = res;
@@ -35,6 +34,5 @@ export class InitComponent implements OnInit {
         });
       },(err) => {console.log(err);this.commonsService.cleanDataToken();});
     }
-    console.log(this.userAccounts);
   }
 }

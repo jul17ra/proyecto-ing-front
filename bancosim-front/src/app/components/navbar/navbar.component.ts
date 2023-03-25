@@ -47,6 +47,7 @@ export class NavbarComponent implements OnInit, OnChanges{
   logOut(): void {
     console.log('logout')
     sessionStorage.clear();
+    localStorage.clear();
     this.dataUser = false;
     this.router.navigate([''])
   }

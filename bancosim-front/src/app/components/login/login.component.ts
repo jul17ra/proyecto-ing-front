@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   public formlogin: FormGroup;
   @Output() eventLogin = new EventEmitter<FinalUser>();
   private keepSession = false;
+  public finalUser!: FinalUser;
 
   constructor(public formBuilder: FormBuilder, public http: HttpService, private userService: FinalUserService, public router:Router) {
     this.formlogin = this.formBuilder.group(
@@ -46,11 +47,11 @@ export class LoginComponent implements OnInit {
     this.userService.login(dataUserLogin).subscribe((res: any) => {
       let dataRes: FinalUserDTO = res.body;
       console.log('user login :' , dataRes.finalUser);
-      this.eventLogin.emit(dataRes.finalUser);
       sessionStorage.setItem('token', btoa(dataRes.auth));
       if(this.keepSession){
         localStorage.setItem('token', btoa(dataRes.auth));
       }
+      this.finalUser = dataRes.finalUser;
       this.router.navigate(['init'], {state: {...dataRes.finalUser}});
     });
   }
