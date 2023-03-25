@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       if(this.keepSession){
         localStorage.setItem('token', btoa(dataRes.auth));
       }
-      this.router.navigate(['init']);
+      this.router.navigate(['init'], {state: {...dataRes.finalUser}});
     });
   }
 

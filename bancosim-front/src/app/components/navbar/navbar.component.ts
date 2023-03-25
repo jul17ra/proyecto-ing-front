@@ -9,14 +9,27 @@ import { URLS } from '../../const/URLS';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit{
+export class NavbarComponent implements OnInit, OnChanges{
 
   finalUser!: FinalUser;
   public dataUser: boolean = false;
   public URLS = URLS;
+  @Input() public finalUserData!: FinalUser;
 
   constructor(public router: Router, private commonsService:CommonsService, private userService: FinalUserService) {
     console.log('Hello navbar');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    if(changes['finalUserData']){
+      console.log(this.finalUserData);
+      this.dataUser = this.finalUserData ? true : false;
+      if(this.finalUserData){
+        this.finalUser = this.finalUserData // Se setea la data en una variable por si finalUserData cambia en tiempo de ejecución a undefined.
+        console.log(this.finalUser);
+      }
+    }
   }
 
   ngOnInit(): void {
@@ -34,6 +47,7 @@ export class NavbarComponent implements OnInit{
   logOut(): void {
     console.log('logout')
     sessionStorage.clear();
+    this.dataUser = false;
     this.router.navigate([''])
   }
 
