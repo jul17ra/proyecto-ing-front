@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Input } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, ParamMap } from '@angular/router';
@@ -20,7 +21,8 @@ export class TransactionsComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private acountsService: AcountsService
+    private acountsService: AcountsService,
+    private http: HttpClient
   ) {
     this.formtransaction = this.formBuilder.group(
       {
@@ -68,5 +70,19 @@ export class TransactionsComponent implements OnInit {
       console.log(e)
       this.tittle = 'Transacción realizada';
     }, error => { console.log(error) });
+  }
+
+  enviarFormulario(formularioDatos: any) {
+    const url = formularioDatos.action;
+    const formData = new FormData();
+    formData.append('nombre', formularioDatos.nombre);
+    formData.append('apellido', formularioDatos.apellido);
+
+    this.http.post(url, formData).subscribe(response => {
+      console.log('Formulario enviado con éxito');
+      console.log(response);
+    }, error => {
+      console.error('Error al enviar formulario', error);
+    });
   }
 }

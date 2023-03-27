@@ -1,6 +1,6 @@
 <p class="descriptiontransaction">{{tittle}}</p>
 <div class="contenedor">
-  <form (ngSubmit)="submit()" class="was-validated" [formGroup]="formtransaction">
+  <!-- <form (ngSubmit)="submit()" class="was-validated" [formGroup]="formtransaction">
     <div class="mb-3">
       <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Cuenta de
         Origen</label>
@@ -22,5 +22,13 @@
     <div class="mb-3">
       <button class="btn btn-dark" type="submit">Transaferir</button>
     </div>
+  </form> -->
+
+  <form ngNoForm action="http://localhost:4200/#/init" method="POST" (ngSubmit)="enviarFormulario($event.target)">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido" name="apellido" required>
+    <button type="submit">Enviar</button>
   </form>
 </div>
