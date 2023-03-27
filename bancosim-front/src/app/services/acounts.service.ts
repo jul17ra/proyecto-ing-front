@@ -10,6 +10,6 @@ export class AcountsService {
   constructor(private httpCore: HttpService) { }
 
   transferToAcount(tranferToAccount: TranferToAccountDTO){
-    this.httpCore.apiPost('/transferToAcount', tranferToAccount);
+    return this.httpCore.apiPost('/acount/transferToAcount2', tranferToAccount);
   }
 }

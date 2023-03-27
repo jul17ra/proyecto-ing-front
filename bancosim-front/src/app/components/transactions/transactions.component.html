@@ -1,6 +1,6 @@
 <p class="descriptiontransaction">{{tittle}}</p>
 <div class="contenedor">
-  <form class="was-validated" [formGroup]="formtransaction">
+  <form (ngSubmit)="submit()" class="was-validated" [formGroup]="formtransaction">
     <div class="mb-3">
       <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Cuenta de
         Origen</label>
@@ -20,7 +20,7 @@
         formControlName="valor">
     </div>
     <div class="mb-3">
-      <button class="btn btn-dark" type="submit" (click)="submit()">Transaferir</button>
+      <button class="btn btn-dark" type="submit">Transaferir</button>
     </div>
   </form>
 </div>

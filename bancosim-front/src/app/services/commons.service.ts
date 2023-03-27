@@ -11,15 +11,15 @@ export class CommonsService {
   constructor(public router: Router,  private userService: FinalUserService) { }
 
   public validIntoSession(): void {
-    const token = sessionStorage.getItem('token') ? atob(sessionStorage.getItem('token')!) : false;
+    const token = localStorage.getItem('token') ? atob(localStorage.getItem('token')!) : false;
     if (!token) {
-      sessionStorage.clear();
+      localStorage.clear();
       this.router.navigate(['']);
     }
   }
 
   public cleanDataToken(): void {
-    sessionStorage.clear();
+    localStorage.clear();
     this.router.navigate(['']);
   }
 }

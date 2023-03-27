@@ -8,6 +8,7 @@ import { MovimientosComponent } from './components/movimientos/movimientos.compo
 import { EditaccountComponent } from './components/editaccount/editaccount.component';
 import { InitComponent } from './components/init/init.component';
 import { URLS } from './const/URLS';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
     component: AccountComponent
   },
   {
-    path: `${URLS.TRANSACTIONS}/:a`,
+    path: `${URLS.TRANSACTIONS}/:a?account1=2123`,
     component: TransactionsComponent
   },
   {
@@ -47,6 +48,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [ {provide: LocationStrategy, useClass: HashLocationStrategy} ]
 })
 export class AppRoutingModule { }

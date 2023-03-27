@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { AcountsService } from 'src/app/services/acounts.service';
 
 @Component({
   selector: 'app-transactions',
@@ -18,11 +19,12 @@ export class TransactionsComponent implements OnInit {
 
   constructor(
     public formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private acountsService: AcountsService
   ) {
     this.formtransaction = this.formBuilder.group(
       {
-        origen: ['', Validators.required],
+        origen: ['6534232343', Validators.required],
         destino: ['', Validators.required],
         valor: ['', Validators.required],
       }
@@ -33,6 +35,10 @@ export class TransactionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe((e:any) => {console.log(e);
+      console.log(e.acount);
+      console.log(this.formtransaction.controls['origen'].setValue(e.acount));
+    });
     this.activatedRoute.paramMap.subscribe((parametros: ParamMap) => {
       switch (parseInt(parametros.get("a")!)) {
         case 1: {
@@ -56,5 +62,11 @@ export class TransactionsComponent implements OnInit {
     console.log('origen', this.formtransaction.value.origen);
     console.log('destino: ', this.formtransaction.value.destino);
     console.log('valor: ', this.formtransaction.value.valor);
+    const dataToTransfer = { cantTranfer: this.formtransaction.value.valor + '', destinyNumber: this.formtransaction.value.destino + '', originNumber: this.formtransaction.value.origen + '' };
+    console.log(dataToTransfer);
+    this.acountsService.transferToAcount(dataToTransfer).subscribe(e => {
+      console.log(e)
+      this.tittle = 'Transacción realizada';
+    }, error => { console.log(error) });
   }
 }

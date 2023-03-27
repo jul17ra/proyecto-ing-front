@@ -15,7 +15,7 @@ export class HttpService {
     private http: HttpClient,
 
   ) {
-    this.token = atob(sessionStorage.getItem('token') + '')
+    this.token = atob(localStorage.getItem('token') + '')
   }
 
   apiAuthentication(api:string, data: IUserLoginRequest){
@@ -23,7 +23,7 @@ export class HttpService {
   }
 
   apiGet(api: string) {
-    this.token = atob(sessionStorage.getItem('token') + '')
+    this.token = atob(localStorage.getItem('token') + '')
     let response;
     this.http
       .get(environment.api + api, {
@@ -34,7 +34,7 @@ export class HttpService {
   }
 
   apiPost(api: string, data:any) {
-    this.token = atob(sessionStorage.getItem('token') + '')
+    this.token = atob(localStorage.getItem('token') + '')
     return this.http
       .post(`http://${environment.api}${api}`, data, {
         headers: { 'Authorization': `Bearer ${this.token}` , 'Access-Control-Allow-Origin': '*',

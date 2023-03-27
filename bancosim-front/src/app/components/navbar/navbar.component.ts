@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit, OnChanges{
 
   ngOnInit(): void {
     this.commonsService.validIntoSession();
-    const token = sessionStorage.getItem('token');
+    const token = localStorage.getItem('token');
     console.log('token', token);
     this.userService.getUserIntoSession().subscribe((res:any) => {
       this.finalUser = res;
@@ -55,7 +55,7 @@ export class NavbarComponent implements OnInit, OnChanges{
   redirectTo(from: string): void {
     console.log(from);
     if (this.finalUser) {
-      this.router.navigate([from]);
+      this.router.navigate([from], {queryParams: {acount: '12312'}, state: {data: 'sadsad'}});
     } else {
       this.router.navigate(['']);
     }

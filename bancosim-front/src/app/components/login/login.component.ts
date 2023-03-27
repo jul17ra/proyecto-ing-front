@@ -29,7 +29,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    const token = sessionStorage.getItem('token') ? atob(sessionStorage.getItem('token')!): false;
+    const token = localStorage.getItem('token') ? atob(localStorage.getItem('token')!): false;
+    console.log(token);
     if(token){
       this.userService.getUserIntoSession().subscribe((res: any) => {
         console.log(res);
