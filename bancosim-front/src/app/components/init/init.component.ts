@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { IUserAccount } from 'src/app/Interfaces/IUserAccount.interface';
 import { FinalUser } from 'src/app/model/FinalUser.interface';
 import { CommonsService } from 'src/app/services/commons.service';
@@ -17,7 +18,7 @@ export class InitComponent implements OnInit {
   userAccounts!: Array<IUserAccount>;
   private token!: string | boolean;
 
-  constructor(public router: Router, private userService: FinalUserService, private userAccountService: UserAccountService, private commonsService: CommonsService) {
+  constructor(public router: Router, private userService: FinalUserService, private userAccountService: UserAccountService, private commonsService: CommonsService, private cookieService: CookieService) {
     this.finalUser = this.router.getCurrentNavigation()?.extras.state ? this.router.getCurrentNavigation()?.extras.state as FinalUser : this.finalUser;
   }
 

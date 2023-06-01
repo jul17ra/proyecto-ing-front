@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { IUserLoginRequest } from 'src/app/Interfaces/UserLogin.interface';
 import { FinalUserDTO } from 'src/app/model/DTOs/FinalUserDTO.interface';
 import { FinalUser } from 'src/app/model/FinalUser.interface';
@@ -19,8 +20,8 @@ export class LoginComponent implements OnInit {
   private keepSession = false;
   public finalUser!: FinalUser;
 
-  constructor(public formBuilder: FormBuilder, public http: HttpService, private userService: FinalUserService, public router:Router) {
-    this.formlogin = this.formBuilder.group(
+  constructor(public formBuilder: FormBuilder, public http: HttpService, private userService: FinalUserService, public router:Router, private cookieService: CookieService) {
+  this.formlogin = this.formBuilder.group(
       {
         identification: ['', Validators.required],
         password: ['', Validators.required]
@@ -49,8 +50,10 @@ export class LoginComponent implements OnInit {
       let dataRes: FinalUserDTO = res.body;
       console.log('user login :' , dataRes.finalUser);
       sessionStorage.setItem('token', btoa(dataRes.auth));
+      this.cookieService.set('token', btoa(dataRes.auth), 1, '/');
       if(this.keepSession){
         localStorage.setItem('token', btoa(dataRes.auth));
+        
       }
       this.finalUser = dataRes.finalUser;
       this.router.navigate(['init'], {state: {...dataRes.finalUser}});
