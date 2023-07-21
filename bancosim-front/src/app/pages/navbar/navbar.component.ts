@@ -34,7 +34,7 @@ export class NavbarComponent implements OnInit, OnChanges{
 
   ngOnInit(): void {
     this.commonsService.validIntoSession();
-    const token = localStorage.getItem('token');
+    const token = sessionStorage.getItem('token');
     console.log('token', token);
     this.userService.getUserIntoSession().subscribe((res:any) => {
       this.finalUser = res;

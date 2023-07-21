@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { IDataExpansionPanel } from 'src/app/Interfaces/IDataExpansionPanel.interface';
 import { AcountsService } from 'src/app/services/acounts.service';
 
 @Component({
@@ -15,7 +16,11 @@ export class TransactionsComponent implements OnInit {
   public destino: AbstractControl
   public valor: AbstractControl
   tittle: string = ""
+  dataPanel!: IDataExpansionPanel;
 
+  @ViewChild('contentOriginAccount') contentOriginAccount!: TemplateRef<any>;
+  @ViewChild('contentDestinyAccount') contentDestinyAccount!: TemplateRef<any>;
+  @ViewChild('contentValueTransfer') contentValueTransfer!: TemplateRef<any>;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -35,7 +40,8 @@ export class TransactionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((e:any) => {console.log(e);
+    this.activatedRoute.queryParams.subscribe((e: any) => {
+      console.log(e);
       console.log(e.acount);
       this.formtransaction.controls['origin'].setValue(e.acount);
     });
@@ -58,6 +64,32 @@ export class TransactionsComponent implements OnInit {
     )
   }
 
+  ngAfterViewInit() {
+    this.dataPanel = {
+      title: 'Transfiere a otras cuentas',
+      options: {
+        successive: true,
+        nameBtnFinally: 'Transferir'
+      },
+      data: [{
+        titleName: 'Cuenta Origen',
+        value: '',
+        content: this.contentOriginAccount,
+      },
+      {
+        titleName: 'Cuenta Destino',
+        value: '',
+        content: this.contentDestinyAccount,
+      },
+      {
+        titleName: 'Valor',
+        value: '',
+        content: this.contentValueTransfer,
+      }
+      ]
+    }
+  }
+
   submit(): void {
     console.log('origen', this.formtransaction.value.origen);
     console.log('destino: ', this.formtransaction.value.destino);
@@ -69,4 +101,9 @@ export class TransactionsComponent implements OnInit {
       this.tittle = 'Transacción realizada';
     }, error => { console.log(error) });
   }
+
+  clickTransaction(data: IDataExpansionPanel): void{
+    console.log(data);
+  }
+
 }

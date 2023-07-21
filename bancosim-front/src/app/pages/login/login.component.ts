@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(localStorage.getItem('token'));
     const token = localStorage.getItem('token') ? atob(localStorage.getItem('token')!): false;
     console.log(token);
     if(token){
@@ -50,10 +51,9 @@ export class LoginComponent implements OnInit {
       let dataRes: FinalUserDTO = res.body;
       console.log('user login :' , dataRes.finalUser);
       sessionStorage.setItem('token', btoa(dataRes.auth));
-      this.cookieService.set('token', btoa(dataRes.auth), 1, '/');
       if(this.keepSession){
         localStorage.setItem('token', btoa(dataRes.auth));
-        
+        this.cookieService.set('token', btoa(dataRes.auth), 1, '/');
       }
       this.finalUser = dataRes.finalUser;
       this.router.navigate(['init'], {state: {...dataRes.finalUser}});

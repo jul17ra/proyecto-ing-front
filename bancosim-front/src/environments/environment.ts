@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: 'localhost:8080'
+  api: 'https://backproject.up.railway.app',
 };
 
 /*

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LogoutComponent } from '../components/logout/logout.component';
+import { LogoutComponent } from '../pages/logout/logout.component';
 import { FinalUser } from '../model/FinalUser.interface';
 
 @Component({

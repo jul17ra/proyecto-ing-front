@@ -23,7 +23,7 @@ export class InitComponent implements OnInit {
   }
 
   async ngOnInit(): Promise<void> {
-    this.token = localStorage.getItem('token') ? atob(localStorage.getItem('token')!) : false;
+    this.token = sessionStorage.getItem('token') ? atob(sessionStorage.getItem('token')!) : false;
     this.commonsService.validIntoSession(); //Valido que continuo dentro de la sesión.
     if (this.token) {
       await this.userService.getUserIntoSession().subscribe(async (res: any) => {

@@ -1,4 +1,4 @@
-<p class="descriptiontransaction">{{tittle}}</p>
+<!-- <p class="descriptiontransaction">{{tittle}}</p>
 <div class="contenedor">
   <form class="was-validated" [formGroup]="formtransaction">
     <div class="mb-3">
@@ -23,4 +23,24 @@
       <button class="btn btn-dark" type="submit" (click)="submit()">Transaferir</button>
     </div>
   </form>
+</div> -->
+<div class="title">
+  <label for="" class="title-accounts-cards">Transferencias</label>
 </div>
+
+<expansion-panel [data]="dataPanel" (eventFinalBtn)="clickTransaction($event)"></expansion-panel>
+
+<ng-template #contentOriginAccount>
+  <p>Seleccione la cuenta de origen</p>
+  <input type="text">
+</ng-template>
+
+<ng-template #contentDestinyAccount>
+  <p>Ingrese la cuenta de destino</p>
+  <input type="text">
+</ng-template>
+
+<ng-template #contentValueTransfer>
+  <p>Ingrese el valor</p>
+  <input type="text">
+</ng-template>

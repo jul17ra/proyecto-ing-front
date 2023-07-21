@@ -1,4 +1,4 @@
-.contenedor {
+/* .contenedor {
     padding: 20px;
     border-radius: 20px;
     margin-top: 30px;
@@ -20,4 +20,16 @@
     color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding-top: 20px;
+} */
+
+.title {
+    padding: 50px 0 0 10em;
+}
+
+.title-accounts-cards{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 30px;
+    font-weight: 500px;
+    color: #CACFD2;
+    margin-bottom: .5em;
 }
