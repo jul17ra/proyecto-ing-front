@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
+import { emit } from 'process';
 import { IDataExpansionPanel } from 'src/app/Interfaces/IDataExpansionPanel.interface';
 
 @Component({
@@ -9,15 +10,13 @@ import { IDataExpansionPanel } from 'src/app/Interfaces/IDataExpansionPanel.inte
 export class ExpansionPanelComponent implements OnInit, OnChanges {
 
   @Input() data!: IDataExpansionPanel;
-  @Output() eventFinalBtn!: EventEmitter<IDataExpansionPanel>;
+  @Output() eventFinalBtn = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
     if(changes['data']){
-      if(this.data.options?.successive){
 
-      }
     }
   }
 
@@ -39,7 +38,9 @@ export class ExpansionPanelComponent implements OnInit, OnChanges {
 
   finalPanel(index: number){
     this.data.data![index].open = false;
-    this.eventFinalBtn.emit(this.data!);
+    if(this.data){
+      this.eventFinalBtn.emit();
+    }
   }
 
 

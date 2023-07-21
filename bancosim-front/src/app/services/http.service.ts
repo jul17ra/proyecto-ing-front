@@ -31,7 +31,7 @@ export class HttpService {
       return response;
   }
 
-  apiPost(api: string, data:any) {
+  apiPost(api: string, data?:any) {
     this.token = atob(sessionStorage.getItem('token') + '')
     return this.http
       .post(`${environment.api}${api}`, data, {

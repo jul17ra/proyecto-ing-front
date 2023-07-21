@@ -12,4 +12,8 @@ export class UserAccountService {
   getUserAccounts(finalUser: FinalUser){
     return this.httpCore.apiPost('/user-acount/getUserAccounts', finalUser);
   }
+
+  getUserAccountsWithToken(){
+    return this.httpCore.apiPost('/user-acount/getUserAccountsWithToken', {});
+  }
 }

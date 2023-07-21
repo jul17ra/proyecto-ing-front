@@ -121,4 +121,5 @@ details summary::marker {
 .footer {
     display: flex;
     justify-content: end;
+    padding: 5px;
 }

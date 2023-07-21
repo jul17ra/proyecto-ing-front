@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { IDataExpansionPanel } from 'src/app/Interfaces/IDataExpansionPanel.interface';
 import { AcountsService } from 'src/app/services/acounts.service';
+import { UserAccountService } from 'src/app/services/user-account.service';
 
 @Component({
   selector: 'app-transactions',
@@ -25,7 +26,8 @@ export class TransactionsComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private acountsService: AcountsService
+    private acountsService: AcountsService,
+    private userAccountService: UserAccountService
   ) {
     this.formtransaction = this.formBuilder.group(
       {
@@ -43,7 +45,7 @@ export class TransactionsComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((e: any) => {
       console.log(e);
       console.log(e.acount);
-      this.formtransaction.controls['origin'].setValue(e.acount);
+      //this.formtransaction.controls['origin'].setValue(e.acount);
     });
     this.activatedRoute.paramMap.subscribe((parametros: ParamMap) => {
       switch (parseInt(parametros.get("a")!)) {
@@ -62,6 +64,13 @@ export class TransactionsComponent implements OnInit {
       }
     }
     )
+    this.getUserAccountsWithToken;
+  }
+
+  getUserAccountsWithToken(): void{
+    this.userAccountService.getUserAccountsWithToken().subscribe(e => {
+      console.log('Data accounts' + e);
+    })
   }
 
   ngAfterViewInit() {
@@ -102,8 +111,8 @@ export class TransactionsComponent implements OnInit {
     }, error => { console.log(error) });
   }
 
-  clickTransaction(data: IDataExpansionPanel): void{
-    console.log(data);
+  clickTransaction(): void{
+
   }
 
 }
