@@ -22,6 +22,7 @@ import { ContainerComponent } from './container/container.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { ExpansionPanelComponent } from './components/expansion-panel/expansion-panel.component';
 import { InputAppComponent } from './components/input-app/input-app.component';
+import { SelectAppComponent } from './components/select-app/select-app.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { InputAppComponent } from './components/input-app/input-app.component';
     ContainerComponent,
     NavbarComponent,
     ExpansionPanelComponent,
-    InputAppComponent
+    InputAppComponent,
+    SelectAppComponent
   ],
   imports: [
     BrowserModule,

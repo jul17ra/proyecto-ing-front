@@ -1,7 +1,7 @@
 <div class="panel">
     <h2>{{data.title}}</h2>
-    <details *ngFor="let data1 of data.data; index as i" [open]="data.options?.successive && data1.open">
-        <summary>
+    <details *ngFor="let data1 of data.data; index as i" [open]="data.options?.successive && data1.open" [style]="'background: '+ (data.options?.backgroundColor ? data.options?.backgroundColor : 'black') +'; border:1px solid '+ (data.options?.borderColor ? data.options?.borderColor :'goldenrod;')">
+        <summary [style]="'color:' + (data.options?.letterColor? data.options?.letterColor : 'white')">
            <ul>
                <li class="titleName">{{data1.titleName}}</li>
                <li class="titleValue">{{data1.value}}</li>

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectorRef } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { IDataExpansionPanel } from 'src/app/Interfaces/IDataExpansionPanel.interface';
@@ -18,6 +18,9 @@ export class TransactionsComponent implements OnInit {
   public valor: AbstractControl
   tittle: string = ""
   dataPanel!: IDataExpansionPanel;
+  listAcounts!: any; //TODO modelar
+  acountOrigen!: any; //TODO modelar
+
 
   @ViewChild('contentOriginAccount') contentOriginAccount!: TemplateRef<any>;
   @ViewChild('contentDestinyAccount') contentDestinyAccount!: TemplateRef<any>;
@@ -27,7 +30,7 @@ export class TransactionsComponent implements OnInit {
     public formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private acountsService: AcountsService,
-    private userAccountService: UserAccountService
+    private changeDetectorRef: ChangeDetectorRef
   ) {
     this.formtransaction = this.formBuilder.group(
       {
@@ -64,12 +67,13 @@ export class TransactionsComponent implements OnInit {
       }
     }
     )
-    this.getUserAccountsWithToken;
+    this.getUserAccountsWithToken();
   }
 
   getUserAccountsWithToken(): void{
-    this.userAccountService.getUserAccountsWithToken().subscribe(e => {
-      console.log('Data accounts' + e);
+    this.acountsService.getAccountsWithToken().subscribe(e => {
+       console.log(e);
+      this.listAcounts = e;
     })
   }
 
@@ -78,12 +82,14 @@ export class TransactionsComponent implements OnInit {
       title: 'Transfiere a otras cuentas',
       options: {
         successive: true,
+        required: true,
         nameBtnFinally: 'Transferir'
       },
       data: [{
         titleName: 'Cuenta Origen',
-        value: '',
+        value: this.acountOrigen,
         content: this.contentOriginAccount,
+        valid: (this.acountOrigen !== '' && this.acountOrigen)
       },
       {
         titleName: 'Cuenta Destino',
@@ -97,6 +103,7 @@ export class TransactionsComponent implements OnInit {
       }
       ]
     }
+    this.changeDetectorRef.detectChanges();
   }
 
   submit(): void {
@@ -112,7 +119,12 @@ export class TransactionsComponent implements OnInit {
   }
 
   clickTransaction(): void{
+    console.log('Data:', this.acountOrigen);
+    this.ngAfterViewInit();
+  }
 
+  updateDataLabel(){
+    this.ngAfterViewInit();
   }
 
 }

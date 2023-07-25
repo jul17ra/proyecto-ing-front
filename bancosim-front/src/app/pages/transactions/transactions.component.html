@@ -28,21 +28,23 @@
   <label for="" class="title-accounts-cards">Transferencias</label>
 </div>
 
-<expansion-panel [data]="dataPanel" (eventFinalBtn)="clickTransaction()"></expansion-panel>
-
-<ng-template #contentOriginAccount>
-  <p>Seleccione la cuenta de origen</p>
-  <select name="originAccount" id="">
-    <option value=""></option>
-  </select>
-</ng-template>
-
-<ng-template #contentDestinyAccount>
-  <p>Ingrese la cuenta de destino</p>
-  <input type="text">
-</ng-template>
-
-<ng-template #contentValueTransfer>
-  <p>Ingrese el valor</p>
-  <input type="text">
-</ng-template>
+<expansion-panel [data]="dataPanel" (eventNextBtn)="updateDataLabel()" (eventFinalBtn)="clickTransaction()">
+  <ng-template #contentOriginAccount>
+    <p>Seleccione la cuenta de origen</p>
+    <select name="originAccount" id="selectAcount" [(ngModel)]="acountOrigen">
+      <ng-container *ngFor="let acount of listAcounts">
+        <option [value]="acount.number">{{acount.number}}</option>
+      </ng-container>
+    </select>
+  </ng-template>
+  
+  <ng-template #contentDestinyAccount>
+    <p>Ingrese la cuenta de destino</p>
+    <input type="text">
+  </ng-template>
+  
+  <ng-template #contentValueTransfer>
+    <p>Ingrese el valor</p>
+    <input type="text">
+  </ng-template>
+</expansion-panel>

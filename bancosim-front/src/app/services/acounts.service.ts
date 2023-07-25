@@ -12,4 +12,8 @@ export class AcountsService {
   transferToAcount(tranferToAccount: TranferToAccountDTO){
     return this.httpCore.apiPost('/acount/transferToAcount2', tranferToAccount);
   }
+
+  getAccountsWithToken(){
+    return this.httpCore.apiPost('/acount/getAccountsWithToken', {});
+  }
 }
