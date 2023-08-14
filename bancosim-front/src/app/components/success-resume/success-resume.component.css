@@ -42,3 +42,33 @@
     font-size: 1.3em;
     padding-top: 4px;
 }
+
+.btn-option {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.option {
+    background: #757575;
+    color: black;
+    width: 120px;
+    height: 180px;
+    border: 0px solid;
+    border-radius: 12px;
+    padding: 0px 5px;
+    margin: 0px 5px;
+}
+
+.option label {
+    padding-bottom: 20px;
+    width: 100px;
+}
+
+.option label:hover {
+    cursor: pointer;
+}
+
+.option img {
+    width: 50px;
+}
