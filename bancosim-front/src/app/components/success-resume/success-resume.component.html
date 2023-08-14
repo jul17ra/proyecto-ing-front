@@ -5,15 +5,15 @@
     <div class="container">
         <div class="container-text">
             <label>Cuenta origen</label>
-            <span>{{data.origin}}</span>
+            <span>{{data.origin | accountNumber}}</span>
         </div>
         <div class="container-text">
             <label>Cuenta destino</label>
-            <span>{{data.origin}}</span>
+            <span>{{data.destiny | accountNumber}}</span>
         </div>
         <div class="container-text">
             <label>Valor</label>
-            <span>${{data.value}}</span>
+            <span>$ {{data.value | valueTx}}</span>
         </div>
     </div>
 </div>

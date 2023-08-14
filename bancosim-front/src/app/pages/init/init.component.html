@@ -4,22 +4,9 @@
     <label for="" class="title-select-cards">Seleccione una cuenta: </label>
 </div>
 
-<div class="contenedor">
-    <div class="items"> <label for="" id="title_card" class="label_title">Cuenta Débito</label> </div>
-    <label class="label_num_account disp" for="" id="num_account">7869 3439 2342 2345</label>
-    <label class="label_balance" for="" id="saldo_init">Saldo disponible:</label>
-    <br>
-    <img [src]="'https://cdn-icons-png.flaticon.com/512/1611/1611179.png'" class="icon_account" alt="">
-    <label class="label_title disp" for="" id="saldo_disp">$ 300.000.000</label>
-    <div class="options_cards">
-        <button class="option">Transferir</button>
-        <button class="option">Movimientos</button>
-    </div>
-</div>
-
 <div class="contenedor" *ngFor="let account of userAccounts">
     <div class="items"> <label for="" id="title_card" class="label_title">{{account.acount.name}}</label> </div>
-    <label class="label_num_account disp" for="" id="num_account">{{account.acount.number}}</label>
+    <label class="label_num_account disp" for="" id="num_account">{{account.acount.number | accountNumber}}</label>
     <label class="label_balance" for="" id="saldo_init">Saldo disponible:</label>
     <br>
     <img [src]="account.acount.typeAcount.icon" class="icon_account" alt="">
