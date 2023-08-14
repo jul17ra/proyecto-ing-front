@@ -33,3 +33,29 @@
     color: #CACFD2;
     margin-bottom: .5em;
 }
+
+.subtitle {
+    color: rgb(194, 194, 194);
+}
+
+.select-value {
+    width: 100%;
+    border-radius: 8px;
+    height: 45px;
+    font-size: larger;
+    background: rgb(26, 25, 25);
+    color: white;
+    border: 0px solid;
+    padding-left: 10px;
+}
+
+.input-value {
+    width: 100%;
+    border-radius: 8px;
+    height: 45px;
+    font-size: larger;
+    background: rgb(26, 25, 25);
+    color: white;
+    border: 0px solid;
+    padding-left: 10px;
+}

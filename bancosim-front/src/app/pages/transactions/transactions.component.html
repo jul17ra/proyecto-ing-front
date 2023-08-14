@@ -30,8 +30,9 @@
 
 <expansion-panel [data]="dataPanel" (eventNextBtn)="updateDataLabel()" (eventFinalBtn)="clickTransaction()">
   <ng-template #contentOriginAccount>
-    <p>Seleccione la cuenta de origen</p>
-    <select name="originAccount" id="selectAcount" [(ngModel)]="acountOrigen">
+    <p class="subtitle">Seleccione la cuenta de origen</p>
+    <select name="originAccount" id="selectAcount" [(ngModel)]="acountOrigen" class="select-value">
+      <option selected>Seleccione cuenta</option>
       <ng-container *ngFor="let acount of listAcounts">
         <option [value]="acount.number">{{acount.number}}</option>
       </ng-container>
@@ -39,12 +40,12 @@
   </ng-template>
   
   <ng-template #contentDestinyAccount>
-    <p>Ingrese la cuenta de destino</p>
-    <input type="text">
+    <p class="subtitle">Ingrese la cuenta de destino</p>
+    <input class="input-value" [(ngModel)]="acountDestiny" type="text">
   </ng-template>
   
   <ng-template #contentValueTransfer>
-    <p>Ingrese el valor</p>
-    <input type="text">
+    <p class="subtitle">Ingrese el valor</p>
+    <input class="input-value" [(ngModel)]="acountValue" type="text">
   </ng-template>
 </expansion-panel>

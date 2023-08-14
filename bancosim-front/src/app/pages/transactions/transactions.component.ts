@@ -20,7 +20,8 @@ export class TransactionsComponent implements OnInit {
   dataPanel!: IDataExpansionPanel;
   listAcounts!: any; //TODO modelar
   acountOrigen!: any; //TODO modelar
-
+  acountDestiny!: any; //TODO modelar
+  acountValue!: any; //TODO modelar
 
   @ViewChild('contentOriginAccount') contentOriginAccount!: TemplateRef<any>;
   @ViewChild('contentDestinyAccount') contentDestinyAccount!: TemplateRef<any>;
@@ -82,7 +83,7 @@ export class TransactionsComponent implements OnInit {
       title: 'Transfiere a otras cuentas',
       options: {
         successive: true,
-        required: true,
+        required: false,
         nameBtnFinally: 'Transferir'
       },
       data: [{
@@ -93,12 +94,12 @@ export class TransactionsComponent implements OnInit {
       },
       {
         titleName: 'Cuenta Destino',
-        value: '',
+        value: this.acountDestiny,
         content: this.contentDestinyAccount,
       },
       {
         titleName: 'Valor',
-        value: '',
+        value: this.acountValue,
         content: this.contentValueTransfer,
       }
       ]
