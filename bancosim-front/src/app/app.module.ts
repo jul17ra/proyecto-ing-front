@@ -23,6 +23,8 @@ import { NavbarComponent } from './pages/navbar/navbar.component';
 import { ExpansionPanelComponent } from './components/expansion-panel/expansion-panel.component';
 import { InputAppComponent } from './components/input-app/input-app.component';
 import { SelectAppComponent } from './components/select-app/select-app.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { SuccessResumeComponent } from './components/success-resume/success-resume.component';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { SelectAppComponent } from './components/select-app/select-app.component
     NavbarComponent,
     ExpansionPanelComponent,
     InputAppComponent,
-    SelectAppComponent
+    SelectAppComponent,
+    LoadingComponent,
+    SuccessResumeComponent
   ],
   imports: [
     BrowserModule,

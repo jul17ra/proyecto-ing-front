@@ -24,28 +24,37 @@
     </div>
   </form>
 </div> -->
-<div class="title">
-  <label for="" class="title-accounts-cards">Transferencias</label>
-</div>
+<loading-animation *ngIf="loader; else content"></loading-animation>
+<ng-template #content>
+  <ng-container *ngIf="!txSuccess; else success">
+    <div class="title">
+      <label for="" class="title-accounts-cards">Transferencias</label>
+    </div>
+    <expansion-panel [data]="dataPanel" (eventNextBtn)="updateDataLabel()" (eventFinalBtn)="clickTransaction()">
+      <ng-template #contentOriginAccount>
+        <p class="subtitle">Seleccione la cuenta de origen</p>
+        <select name="originAccount" id="selectAcount" [(ngModel)]="acountOrigen" class="select-value">
+          <option selected disabled>Seleccione cuenta</option>
+          <ng-container *ngFor="let acount of listAcounts">
+            <option [value]="acount.number">{{acount.number}}</option>
+          </ng-container>
+        </select>
+      </ng-template>
+  
+      <ng-template #contentDestinyAccount>
+        <p class="subtitle">Ingrese la cuenta de destino</p>
+        <input class="input-value" [(ngModel)]="acountDestiny" type="text">
+      </ng-template>
+  
+      <ng-template #contentValueTransfer>
+        <p class="subtitle">Ingrese el valor</p>
+        <input class="input-value" [(ngModel)]="acountValue" type="text">
+      </ng-template>
+    </expansion-panel>
+  </ng-container>
+</ng-template>
 
-<expansion-panel [data]="dataPanel" (eventNextBtn)="updateDataLabel()" (eventFinalBtn)="clickTransaction()">
-  <ng-template #contentOriginAccount>
-    <p class="subtitle">Seleccione la cuenta de origen</p>
-    <select name="originAccount" id="selectAcount" [(ngModel)]="acountOrigen" class="select-value">
-      <option selected>Seleccione cuenta</option>
-      <ng-container *ngFor="let acount of listAcounts">
-        <option [value]="acount.number">{{acount.number}}</option>
-      </ng-container>
-    </select>
-  </ng-template>
-  
-  <ng-template #contentDestinyAccount>
-    <p class="subtitle">Ingrese la cuenta de destino</p>
-    <input class="input-value" [(ngModel)]="acountDestiny" type="text">
-  </ng-template>
-  
-  <ng-template #contentValueTransfer>
-    <p class="subtitle">Ingrese el valor</p>
-    <input class="input-value" [(ngModel)]="acountValue" type="text">
-  </ng-template>
-</expansion-panel>
+<ng-template #success>
+  <success-resume [data]="dataSuccess">
+  </success-resume>
+</ng-template>

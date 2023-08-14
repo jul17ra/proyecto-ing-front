@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectorRef } from '@a
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { IDataExpansionPanel } from 'src/app/Interfaces/IDataExpansionPanel.interface';
+import { ITxAccounts } from 'src/app/Interfaces/ITxAccounts.interface';
 import { AcountsService } from 'src/app/services/acounts.service';
 import { UserAccountService } from 'src/app/services/user-account.service';
 
@@ -22,6 +23,9 @@ export class TransactionsComponent implements OnInit {
   acountOrigen!: any; //TODO modelar
   acountDestiny!: any; //TODO modelar
   acountValue!: any; //TODO modelar
+  loader = true;
+  txSuccess = false;
+  dataSuccess!: ITxAccounts;
 
   @ViewChild('contentOriginAccount') contentOriginAccount!: TemplateRef<any>;
   @ViewChild('contentDestinyAccount') contentDestinyAccount!: TemplateRef<any>;
@@ -46,6 +50,7 @@ export class TransactionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loader = true;
     this.activatedRoute.queryParams.subscribe((e: any) => {
       console.log(e);
       console.log(e.acount);
@@ -69,6 +74,7 @@ export class TransactionsComponent implements OnInit {
     }
     )
     this.getUserAccountsWithToken();
+    this.loader = false;
   }
 
   getUserAccountsWithToken(): void{
@@ -108,19 +114,34 @@ export class TransactionsComponent implements OnInit {
   }
 
   submit(): void {
-    console.log('origen', this.formtransaction.value.origen);
-    console.log('destino: ', this.formtransaction.value.destino);
-    console.log('valor: ', this.formtransaction.value.valor);
-    const dataToTransfer = { cantTranfer: this.formtransaction.value.valor + '', destinyNumber: this.formtransaction.value.destino + '', originNumber: this.formtransaction.value.origen + '' };
+    this.loader = true;
+    console.log('origen: ', this.acountOrigen);
+    console.log('destino: ', this.acountDestiny);
+    console.log('valor: ', this.acountValue);
+    const dataToTransfer = { cantTranfer: this.acountValue + '', destinyNumber: this.acountDestiny + '', originNumber: this.acountOrigen + '' };
     console.log(dataToTransfer);
-    this.acountsService.transferToAcount(dataToTransfer).subscribe(e => {
+    this.acountsService.transferToAcount(dataToTransfer).subscribe((e:any) => {
       console.log(e)
+      if(e.status === 0){
+        this.dataSuccess = {
+          origin: this.acountOrigen,
+          destiny: this.acountDestiny,
+          value: this.acountValue
+        }
+        this.txSuccess = true;
+      }
       this.tittle = 'Transacción realizada';
-    }, error => { console.log(error) });
+      this.loader = false;
+    }, error => { 
+      console.log(error)
+      this.loader = false;
+      this.tittle = 'Transacción fallida';
+    });
+
   }
 
   clickTransaction(): void{
-    console.log('Data:', this.acountOrigen);
+    this.submit();
     this.ngAfterViewInit();
   }
 
