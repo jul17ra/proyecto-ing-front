@@ -20,7 +20,7 @@ const routes: Routes = [
     component: AccountComponent
   },
   {
-    path: `${URLS.TRANSACTIONS}/:a?account1=2123`,
+    path: `${URLS.TRANSACTIONS}/:a`,
     component: TransactionsComponent
   },
   {
@@ -32,7 +32,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: `${URLS.MOVEMENTS}/:c`,
+    path: `${URLS.MOVEMENTS}`,
     component: MovimientosComponent
   },
   {

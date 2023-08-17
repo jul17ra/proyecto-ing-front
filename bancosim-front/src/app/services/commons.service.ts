@@ -23,4 +23,13 @@ export class CommonsService {
     sessionStorage.clear();
     this.router.navigate(['']);
   }
+
+  public goTo(dir: string, data?: any) {
+    console.log(dir)
+    if(!data) {
+      this.router.navigate([dir]);
+    } else {
+      this.router.navigate([dir], {queryParams: data});
+    }
+  }
 }

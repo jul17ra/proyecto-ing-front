@@ -12,7 +12,7 @@
     <img [src]="account.acount.typeAcount.icon" class="icon_account" alt="">
     <label class="label_title disp" for="" id="saldo_disp">$ {{account.acount.amount | valueTx}}</label>
     <div class="options_cards">
-        <button class="option">Transferir</button>
-        <button class="option">Movimientos</button>
+        <button (click)="commonsService.goTo(URLS.TRANSACTIONS+'/1')" class="option">Transferir</button>
+        <button (click)="commonsService.goTo(URLS.MOVEMENTS)" class="option">Movimientos</button>
     </div>
 </div>
