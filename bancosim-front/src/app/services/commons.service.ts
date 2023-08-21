@@ -26,6 +26,7 @@ export class CommonsService {
 
   public goTo(dir: string, data?: any) {
     console.log(dir)
+    console.log(data)
     if(!data) {
       this.router.navigate([dir]);
     } else {

@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { IDataExpansionPanel } from 'src/app/Interfaces/IDataExpansionPanel.interface';
 import { ITxAccounts } from 'src/app/Interfaces/ITxAccounts.interface';
 import { AcountsService } from 'src/app/services/acounts.service';
+import { MovementsService } from 'src/app/services/movements.service';
 import { UserAccountService } from 'src/app/services/user-account.service';
 
 @Component({

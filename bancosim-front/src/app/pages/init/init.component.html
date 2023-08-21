@@ -13,6 +13,6 @@
     <label class="label_title disp" for="" id="saldo_disp">$ {{account.acount.amount | valueTx}}</label>
     <div class="options_cards">
         <button (click)="commonsService.goTo(URLS.TRANSACTIONS+'/1')" class="option">Transferir</button>
-        <button (click)="commonsService.goTo(URLS.MOVEMENTS)" class="option">Movimientos</button>
+        <button (click)="commonsService.goTo(URLS.MOVEMENTS, {accountMov: account.acount.number})" class="option">Movimientos</button>
     </div>
 </div>
