@@ -16,25 +16,26 @@ export class MovimientosComponent implements OnInit, OnChanges {
   @Input() dataAcount!: string;
   public URLS = URLS;
 
-  constructor(private movementsService: MovementsService, private route: Router) { 
+  constructor(private movementsService: MovementsService, private route: Router) {
     this.loader = true;
-    const accountMov = this.route.getCurrentNavigation()?.extras.queryParams!["accountMov"];
-    console.log("accountMov: "+ accountMov);
     try {
-      if(accountMov){
-        this.movementsService.getMovementsByAccount(accountMov).subscribe((res:any) => {
+      const accountMov = this.route.getCurrentNavigation()?.extras.queryParams!["accountMov"];
+      console.log("accountMov: " + accountMov);
+      if (accountMov) {
+        this.movementsService.getMovementsByAccount(accountMov).subscribe((res: any) => {
           console.log(res);
           this.movimientos = res;
           this.loader = false;
         }
-      );
-    } else {
-      setTimeout(() => this.route.navigate([URLS.INIT]), 5000);
-    }
+        );
+      } else {
+        this.route.navigate([URLS.INIT]);
+      }
     } catch (error) {
-      setTimeout(() => this.route.navigate([URLS.INIT]), 5000);
+      console.log(error)
+      this.route.navigate([URLS.INIT]);
     }
-
+    console.log('ejemplo')
   }
 
   ngOnInit(): void {
