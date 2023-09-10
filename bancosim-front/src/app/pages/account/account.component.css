@@ -1,0 +1,50 @@
+.box{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #E6AF1B;
+  border: 2px solid #E6AF1B;
+  border-radius: 15px;
+  color: black;
+  width: max-content;
+  margin: 10%;
+  padding: 30px;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  width: max-content;
+}
+input[type="button"]{
+  color:#fff;
+  position:relative;
+  margin: 5px;
+  left:9px;
+  top:25px;
+  width:100px;
+  cursor:pointer;
+}
+/* Deshabilitar incremento */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input, select{
+  margin: 10px 0px 10px 0px;
+
+}
+label{
+  margin: 5px;
+}
+
+

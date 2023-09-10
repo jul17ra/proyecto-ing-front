@@ -1,0 +1,72 @@
+.home {
+    position: relative;
+    display: flex;
+}
+
+.home img {
+    position: relative;
+    display: flex;
+    height: 600px;
+    width: auto;
+    margin-top: 50px;
+    margin-left: -250px;
+}
+
+.objects {
+    display: flex;
+}
+// Deshabilitar incremento
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.contenedor {
+    background-color: #E6AF1B;
+    float: left;
+    padding: 50px;
+    border-radius: 20px;
+    margin-top: 150px;
+    width: max-content;
+    height: max-content;
+    justify-content: centar;
+    align-items: center;
+    align-content: center;
+    margin-left: -120px;
+}
+
+.home-name{
+    float: left;
+    margin-left: 80px;
+    margin-top: 50px;
+    font-size: 120px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.font-home-title{
+    font-size: 50px;
+}
+
+.example-h2 {
+    margin: 10px;
+}
+
+.example-margin {
+    margin: 0 10px;
+    color: black;
+    size: 80px;
+}
+.submit{
+
+  color:#fff;
+  position:relative;
+  margin: 5px;
+  left:9px;
+  top:25px;
+  width:100px;
+  cursor:pointer;
+}
+
+

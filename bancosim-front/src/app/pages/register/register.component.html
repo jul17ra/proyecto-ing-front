@@ -1,0 +1,22 @@
+  <div class="contenedor">
+    <form class="was-validated" [formGroup]="formregister">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Email*</label>
+        <input type="email" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" required
+          formControlName="email">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Password*</label>
+        <input type="text" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" required
+          formControlName="password">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Monto inicial Cuenta de Ahorros</label>
+        <input type="number" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea"   required
+          formControlName="ahorro">
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-dark" type="submit">Registrarse</button>
+      </div>
+    </form>
+  </div>

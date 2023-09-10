@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LogoutComponent } from '../components/logout/logout.component';
+import { LogoutComponent } from '../pages/logout/logout.component';
 import { FinalUser } from '../model/FinalUser.interface';
 
 @Component({
@@ -23,7 +23,10 @@ export class ContainerComponent implements OnInit {
 
   data(data:any):void {
     console.log(data);
-    this.dataUser = data.finalUser;
+    if(data.finalUser){
+      this.dataUser = data.finalUser;
+    }
+    console.log('this.dataUser: ', this.dataUser);
   }
 
 }

@@ -1,0 +1,29 @@
+<div class="title">
+    <label for="" class="title title-space">¡Transacción existosa!</label>
+  </div>
+<div class="external">
+    <div class="container">
+        <div class="container-text">
+            <label>Cuenta origen</label>
+            <span>{{data.origin | accountNumber}}</span>
+        </div>
+        <div class="container-text">
+            <label>Cuenta destino</label>
+            <span>{{data.destiny | accountNumber}}</span>
+        </div>
+        <div class="container-text">
+            <label>Valor</label>
+            <span>$ {{data.value | valueTx}}</span>
+        </div>
+    </div>
+</div>
+<div class="btn-option">
+    <button class="option">
+        <label for="">Realizar otra transacción</label>
+        <img src="../../../assets/images/cash-back.png" alt="">
+    </button>
+    <button class="option">
+        <label for="">Salir</label>
+        <img src="../../../assets/images/sign-out.png" alt="">
+    </button>
+</div>

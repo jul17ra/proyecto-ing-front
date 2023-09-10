@@ -1,0 +1,21 @@
+.contenedor {
+    padding: 20px;
+    border-radius: 20px;
+    margin: 30px;
+    width: auto;
+    height: auto;
+    background-color: goldenrod;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.descriptiontransaction{
+    padding: 20px;
+    justify-content: center;
+    display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

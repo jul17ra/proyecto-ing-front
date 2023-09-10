@@ -1,0 +1,21 @@
+
+  <div class="box">
+    <div class="contenedor">
+      <form class="was-validated" [formGroup]="formAddProduct">
+        <label class="form-label" style="font-weight: bold" for="Tipo_Cuenta">Escoge el tipo de cuenta:</label>
+        <select class="form-control in-invalid" name="Tipo_cuenta" id="Tipo_cuenta" required formControlName="tipo_cuenta">
+          <option value="Ahorros">Ahorros</option>
+          <option value="Credito">Credito</option>
+          <option value="Credito_consumo">Credito de consumo</option>
+        </select>
+        <label class="form-label" style="font-weight: bold"  for="valor_lb">Valor:</label>
+        <input type="number" class="form-control in-invalid" name="valor" id="valor" required formControlName="valor">
+        <div class="submit">
+          <button class="btn btn-dark" type="submit" (click)="submit()">Agregar</button>
+        </div>
+      </form>
+  </div>
+
+
+
+  </div>

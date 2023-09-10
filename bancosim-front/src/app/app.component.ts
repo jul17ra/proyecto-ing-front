@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LogoutComponent } from './components/logout/logout.component';
+import { LogoutComponent } from './pages/logout/logout.component';
 
 @Component({
   selector: 'app-root',

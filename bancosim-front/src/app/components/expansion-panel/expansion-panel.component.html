@@ -1,0 +1,21 @@
+<div class="panel">
+    <h2>{{data.title}}</h2>
+    <details *ngFor="let data1 of data.data; index as i" [open]="data.options?.successive && data1.open" [style]="'background: '+ (data.options?.backgroundColor ? data.options?.backgroundColor : 'black') +'; border:1px solid '+ (data.options?.borderColor ? data.options?.borderColor :'goldenrod;')">
+        <summary [style]="'color:' + (data.options?.letterColor? data.options?.letterColor : 'white')">
+           <ul>
+               <li class="titleName">{{data1.titleName}}</li>
+               <li class="titleValue">{{data1.value}}</li>
+               <li></li>
+           </ul>
+        </summary>
+        <div class="content">
+            <ng-contariner [ngTemplateOutlet]="data1.content!">
+            </ng-contariner>
+            <div class="footer">
+                <button class="btnSuccessive" *ngIf="data.options?.successive && ((i) !== 0)" (click)="backPanel(i)">{{data.options?.nameBtnBack || 'Atrás'}}</button>
+                <button class="btnSuccessive" *ngIf="data.options?.successive && (i+1 !== data.data?.length)" (click)="nextPanel(i)">{{data.options?.nameBtnNext || 'Siguiente'}}</button>
+                <button class="btnSuccessive" *ngIf="data.options?.successive && (i+1 === data.data?.length)" (click)="finalPanel(i)">{{data.options?.nameBtnFinally || 'Finalizar'}}</button>
+            </div>
+        </div>
+    </details>
+</div>

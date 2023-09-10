@@ -1,0 +1,61 @@
+/* .contenedor {
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 30px;
+    width: 450px;
+    height: 380px;
+    background-color: goldenrod;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.descriptiontransaction{
+    justify-content: center;
+    display: flex;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 20px;
+} */
+
+.title {
+    padding: 50px 0 0 10em;
+}
+
+.title-accounts-cards{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 30px;
+    font-weight: 500px;
+    color: #CACFD2;
+    margin-bottom: .5em;
+}
+
+.subtitle {
+    color: rgb(194, 194, 194);
+}
+
+.select-value {
+    width: 100%;
+    border-radius: 8px;
+    height: 45px;
+    font-size: larger;
+    background: rgb(26, 25, 25);
+    color: white;
+    border: 0px solid;
+    padding-left: 10px;
+}
+
+.input-value {
+    width: 100%;
+    border-radius: 8px;
+    height: 45px;
+    font-size: larger;
+    background: rgb(26, 25, 25);
+    color: white;
+    border: 0px solid;
+    padding-left: 10px;
+}

@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccountComponent } from './components/account/account.component';
-import { LoginComponent } from './components/login/login.component';
-import { TransactionsComponent } from './components/transactions/transactions.component';
-import { RegisterComponent } from './components/register/register.component';
-import { MovimientosComponent } from './components/movimientos/movimientos.component';
-import { EditaccountComponent } from './components/editaccount/editaccount.component';
-import { InitComponent } from './components/init/init.component';
+import { AccountComponent } from './pages/account/account.component';
+import { LoginComponent } from './pages/login/login.component';
+import { TransactionsComponent } from './pages/transactions/transactions.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { MovimientosComponent } from './pages/movimientos/movimientos.component';
+import { EditaccountComponent } from './pages/editaccount/editaccount.component';
+import { InitComponent } from './pages/init/init.component';
 import { URLS } from './const/URLS';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 const routes: Routes = [
   {
@@ -31,7 +32,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: `${URLS.MOVEMENTS}/:c`,
+    path: `${URLS.MOVEMENTS}`,
     component: MovimientosComponent
   },
   {
@@ -47,6 +48,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [ {provide: LocationStrategy, useClass: HashLocationStrategy} ]
 })
 export class AppRoutingModule { }
