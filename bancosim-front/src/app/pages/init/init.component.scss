@@ -26,14 +26,31 @@
     margin-left: 2em;
     width: 350px;
     height: 200px;
-    background-color: darkgoldenrod;
+    background-color: #96BDC6;
     justify-content: center;
     align-items: center;
     align-content: center;
     position: relative;
     &:hover{
-        background-color: rgb(233, 169, 6);
+        background-color: #85abb3;
     }
+}
+.contenedorCredito {
+  padding: 20px;
+  float: left;
+  border-radius: 20px;
+  margin-top: 2em;
+  margin-left: 2em;
+  width: 350px;
+  height: 200px;
+  background-color: #EF5A5A;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  position: relative;
+  &:hover{
+      background-color: #d14747;
+  }
 }
 
 .items {
