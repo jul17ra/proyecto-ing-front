@@ -1,28 +1,25 @@
 <header class="header">
+  <div class ="container">
     <div class="logo">
-        <label for="" class="title-logo">BancoSim</label>
-        <img src="/assets/images/logo.png" alt="">
+      <label for="" class="title-logo">BancoSim</label>
+      <img src="/assets/images/logo.png" alt="">
     </div>
     <nav>
         <ul class="nav-links">
-            <li><a (click)="redirectTo(URLS.INIT)">Inicio</a></li>
-            <li><a class="nav-item dropdown-toggle btnprincipal" id="navbarDropdown" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">Cuentas</a>
-                <ul class="dropdown-menu btnprincipal goldcolor" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" (click)="redirectTo(URLS.ACOUNT)">Ver productos</a></li>
-                    <li><a class="dropdown-item" (click)="redirectTo(URLS.EDIT)">Configuración</a></li>
-                </ul>
-            </li>
-            <li><a class="nav-item dropdown-toggle btnprincipal" href="#" id="navbarDropdown" role="button"
+            <li><a (click)="redirectTo(URLS.INIT)" role="button">Inicio</a></li>
+            <li *ngIf="dataUser"><a class="dropdown-item" (click)="redirectTo(URLS.ACOUNT)" role="button">Agregar productos</a></li>
+            <li *ngIf="dataUser"><a class="nav-item dropdown-toggle btnprincipal" href="#" id="navbarDropdown" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">Transacciones</a>
                 <ul class="dropdown-menu btnprincipal goldcolor" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" (click)="redirectTo(URLS.TRANSACTIONS+'/1')">Transferir</a></li>
-                    <li><a class="dropdown-item" (click)="redirectTo(URLS.TRANSACTIONS+'/2')">Pagar productos</a></li>
-                    <li><a class="dropdown-item" (click)="redirectTo(URLS.TRANSACTIONS+'/3')">Pagar Facturas</a></li>
+                    <li><a class="dropdown-item" (click)="redirectTo(URLS.TRANSACTIONS+'/1')" role="button">Transferir</a></li>
+                    <li><a class="dropdown-item" (click)="redirectTo(URLS.TRANSACTIONS+'/2')" role="button">Pagar productos</a></li>
                 </ul>
             </li>
-            <li *ngIf="!dataUser"><a (click)="registerRedirect()">Registro</a></li>
-            <li *ngIf="dataUser "><a (click)="logOut()">Log Out</a></li>
+            <li *ngIf="!dataUser"><a (click)="registerRedirect()" role="button">Registro</a></li>
+            <li *ngIf="dataUser"><a class="dropdown-item" (click)="redirectTo(URLS.EDIT)"role="button">Configuración</a></li>
+            <li *ngIf="dataUser"><a (click)="logOut()" role="button">Log Out</a></li>
         </ul>
     </nav>
+  </div>
+
 </header>

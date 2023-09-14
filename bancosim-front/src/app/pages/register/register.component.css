@@ -1,10 +1,10 @@
 .contenedor {
-    padding: 20px;
+    padding: 30px;
     border-radius: 20px;
     margin-top: 30px;
     width: 450px;
-    height: 520px;
-    background-color: darkgoldenrod;
+    height: max-content;
+    background-color: #E6AF1B;
     justify-content: center;
     align-items: center;
     align-content: center;
@@ -17,4 +17,10 @@
     background-repeat: no-repeat;
     background-position: right calc(0.375em + 0.1875rem) center;
     background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem)
+}
+/* Deshabilitar incremento */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

@@ -12,8 +12,6 @@ export class RegisterComponent implements OnInit {
   public email: AbstractControl
   public password: AbstractControl
   public ahorro: AbstractControl
-  public tc: AbstractControl
-  public deuda: AbstractControl
 
   constructor(
     public formBuilder: FormBuilder,
@@ -22,16 +20,12 @@ export class RegisterComponent implements OnInit {
       {
         email: ['', Validators.required],
         password: ['', Validators.required],
-        ahorro: [''],
-        tc: [''],
-        deuda: [''],
+        ahorro: ['',Validators.required],
       }
     )
     this.email = this.formregister.controls['email']
     this.password = this.formregister.controls['password']
     this.ahorro = this.formregister.controls['ahorro']
-    this.tc = this.formregister.controls['tc']
-    this.deuda = this.formregister.controls['deuda']
   }
   ngOnInit(): void {
   }
