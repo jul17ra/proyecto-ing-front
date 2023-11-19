@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { IUserLoginRequest } from '../Interfaces/UserLogin.interface';
+import { CommonsService } from './commons.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class HttpService {
   res!: any;
   constructor(
     private http: HttpClient,
+    private commons: CommonsService
   ) {
     this.token = atob(sessionStorage.getItem('token') + '')
   }
@@ -42,13 +44,14 @@ export class HttpService {
      'Access-Control-Allow-Origin': '*',
      'Access-Control-Allow-Methods': '*',
     }
-    if(sessionStorage.getItem('security') === 'level-attack-high-security' && this.token !=='ée'){
+    console.log(this.commons.getParameterSecurity())
+    if(this.commons.getParameterSecurity() === 'level-attack-high-security' && this.token !=='ée'){
       headers['X-CSRF-TOKEN'] = `${this.token}`;
     }
-    if(sessionStorage.getItem('security') === 'level-attack-medium-security'){
+    if(this.commons.getParameterSecurity() === 'level-attack-medium-security'){
       headers['X-CSRF-TOKEN'] = 'your-csrf-token-value'
     }
-    if(sessionStorage.getItem('token')){
+    if(sessionStorage.getItem('token') && this.token !=='ée'){
       headers.Authorization = `Bearer ${this.token}`;
     }
     console.log('----------', ' headers ', headers, '-----------');

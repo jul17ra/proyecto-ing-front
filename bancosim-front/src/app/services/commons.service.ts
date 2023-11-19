@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { FinalUserService } from './final-user.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonsService {
 
-  constructor(public router: Router,  private userService: FinalUserService) { }
+  constructor(public router: Router) { }
 
   public validIntoSession(): void {
     const token = sessionStorage.getItem('token') ? atob(sessionStorage.getItem('token')!) : false;
@@ -28,5 +27,10 @@ export class CommonsService {
     } else {
       this.router.navigate([dir], {queryParams: data});
     }
+  }
+
+  public getParameterSecurity(){
+    let security = sessionStorage.getItem('security');
+    return security ? security : 'level-attack-without-security';
   }
 }

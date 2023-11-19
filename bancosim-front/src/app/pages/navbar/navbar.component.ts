@@ -40,8 +40,10 @@ export class NavbarComponent implements OnInit, OnChanges{
   }
 
   logOut(): void {
+    const security = sessionStorage.getItem('security');
     sessionStorage.clear();
     localStorage.clear();
+    sessionStorage.setItem('security', security!);
     this.dataUser = false;
     this.router.navigate([''])
   }
