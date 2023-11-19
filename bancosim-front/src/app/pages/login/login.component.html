@@ -1,4 +1,4 @@
-<div class="container-div">
+<div class="container-div" *ngIf="!loadAnimation; else loader">
   <div class="home-name">
     <p class="font-home-title">BancoSim</p>
   </div>
@@ -30,5 +30,6 @@
     <img src="/assets/images/home-magic.png" alt="">
   </div>
 </div>
-
-
+<ng-template #loader>
+  <loading-animation></loading-animation>
+</ng-template>

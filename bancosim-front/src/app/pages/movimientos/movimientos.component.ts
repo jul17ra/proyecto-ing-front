@@ -24,10 +24,8 @@ export class MovimientosComponent implements OnInit, OnChanges {
     try {
       const accountMov = this.route.getCurrentNavigation()?.extras.queryParams!["accountMov"];
       this.accountOrigin = accountMov;
-      console.log("accountMov: " + accountMov);
       if (accountMov) {
         this.movementsService.getMovementsByAccount(accountMov).subscribe((res: any) => {
-          console.log(res);
           this.movimientos = res;
           this.loader = false;
         }
@@ -36,10 +34,8 @@ export class MovimientosComponent implements OnInit, OnChanges {
         this.route.navigate([URLS.INIT]);
       }
     } catch (error) {
-      console.log(error)
       this.route.navigate([URLS.INIT]);
     }
-    console.log('ejemplo')
   }
 
   ngOnInit(): void {
@@ -49,8 +45,7 @@ export class MovimientosComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes["dataAcount"]) {
       this.loader = false;
-      this.movementsService.getMovementsByAccount(this.dataAcount).subscribe((res) => {
-        console.log(res);
+      this.movementsService.getMovementsByAccount(this.dataAcount).subscribe(() => {
       }
       );
     }
