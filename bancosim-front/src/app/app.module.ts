@@ -27,6 +27,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { SuccessResumeComponent } from './components/success-resume/success-resume.component';
 import { AccountNumberPipe } from './components/account-number.pipe';
 import { ValueTxPipe } from './components/value-tx.pipe';
+import { ParametersComponent } from './components/parameters/parameters.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ValueTxPipe } from './components/value-tx.pipe';
     LoadingComponent,
     SuccessResumeComponent,
     AccountNumberPipe,
-    ValueTxPipe
+    ValueTxPipe,
+    ParametersComponent
   ],
   imports: [
     BrowserModule,

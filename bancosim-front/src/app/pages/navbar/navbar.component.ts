@@ -17,17 +17,14 @@ export class NavbarComponent implements OnInit, OnChanges{
   @Input() public finalUserData!: FinalUser;
 
   constructor(public router: Router, private commonsService:CommonsService, private userService: FinalUserService) {
-    console.log('Hello navbar');
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     if(changes['finalUserData']){
-      console.log(this.finalUserData);
       this.dataUser = this.finalUserData ? true : false;
       if(this.finalUserData){
         this.finalUser = this.finalUserData // Se setea la data en una variable por si finalUserData cambia en tiempo de ejecución a undefined.
-        console.log(this.finalUser);
       }
     }
   }
@@ -35,17 +32,14 @@ export class NavbarComponent implements OnInit, OnChanges{
   ngOnInit(): void {
     this.commonsService.validIntoSession();
     const token = sessionStorage.getItem('token');
-    console.log('token', token);
     this.userService.getUserIntoSession().subscribe((res:any) => {
       this.finalUser = res;
       this.dataUser = this.finalUser ? true : false;// Se setea la data en una variable por si finalUserData cambia en tiempo de ejecución a undefined.
-      console.log('finalUser', this.finalUser);
       }
     );
   }
 
   logOut(): void {
-    console.log('logout')
     sessionStorage.clear();
     localStorage.clear();
     this.dataUser = false;
@@ -53,7 +47,6 @@ export class NavbarComponent implements OnInit, OnChanges{
   }
 
   redirectTo(from: string): void {
-    console.log(from);
     if (this.finalUser) {
       this.router.navigate([from], {queryParams: {acount: '12312'}, state: {data: 'sadsad'}});
     } else {

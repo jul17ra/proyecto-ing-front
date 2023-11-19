@@ -21,7 +21,6 @@ export class MovementsService {
       message: 'obtener informacion de los movimientos de la cuenta: '.concat(data),
       state: 0
     }
-    console.log(genericRequest);
     return this.httpCore.apiPost('/movements/getMovementsByAccount', genericRequest);
   }
 }

@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   @Output() eventLogin = new EventEmitter<FinalUser>();
   private keepSession = false;
   public finalUser!: FinalUser;
+  public loadAnimation = false
 
   constructor(public formBuilder: FormBuilder, public http: HttpService, private userService: FinalUserService, public router:Router, private cookieService: CookieService) {
   this.formlogin = this.formBuilder.group(
@@ -30,32 +31,30 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(localStorage.getItem('token'));
     const token = localStorage.getItem('token') ? atob(localStorage.getItem('token')!): false;
-    console.log(token);
     if(token){
-      this.userService.getUserIntoSession().subscribe((res: any) => {
-        console.log(res);
-        this.router.navigate(['init']);
-      });
+      this.userService.getUserIntoSession().subscribe(() => 
+        this.router.navigate(['init'])
+      );
     }
   }
 
-  submit() {
+  async submit() {
     const dataUserLogin: IUserLoginRequest = {
       idType: '01',
       identification: this.formlogin.controls['identification'].value,
       password: this.formlogin.controls['password'].value
     };
+    this.loadAnimation = true;
     this.userService.login(dataUserLogin).subscribe((res: any) => {
-      let dataRes: FinalUserDTO = res.body;
-      console.log('user login :' , dataRes.finalUser);
+      const dataRes: FinalUserDTO = res.body;
       sessionStorage.setItem('token', btoa(dataRes.auth));
       if(this.keepSession){
         localStorage.setItem('token', btoa(dataRes.auth));
         this.cookieService.set('token', btoa(dataRes.auth), 1, '/');
       }
       this.finalUser = dataRes.finalUser;
+      this.loadAnimation = false;
       this.router.navigate(['init'], {state: {...dataRes.finalUser}});
     });
   }

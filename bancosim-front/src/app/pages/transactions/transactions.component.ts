@@ -4,8 +4,6 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { IDataExpansionPanel } from 'src/app/Interfaces/IDataExpansionPanel.interface';
 import { ITxAccounts } from 'src/app/Interfaces/ITxAccounts.interface';
 import { AcountsService } from 'src/app/services/acounts.service';
-import { MovementsService } from 'src/app/services/movements.service';
-import { UserAccountService } from 'src/app/services/user-account.service';
 
 @Component({
   selector: 'app-transactions',
@@ -53,8 +51,6 @@ export class TransactionsComponent implements OnInit {
   ngOnInit(): void {
     this.loader = true;
     this.activatedRoute.queryParams.subscribe((e: any) => {
-      console.log(e);
-      console.log(e.acount);
       //this.formtransaction.controls['origin'].setValue(e.acount);
     });
     this.activatedRoute.paramMap.subscribe((parametros: ParamMap) => {
@@ -80,7 +76,6 @@ export class TransactionsComponent implements OnInit {
 
   getUserAccountsWithToken(): void{
     this.acountsService.getAccountsWithToken().subscribe(e => {
-       console.log(e);
       this.listAcounts = e;
     })
   }
@@ -116,13 +111,8 @@ export class TransactionsComponent implements OnInit {
 
   submit(): void {
     this.loader = true;
-    console.log('origen: ', this.acountOrigen);
-    console.log('destino: ', this.acountDestiny);
-    console.log('valor: ', this.acountValue);
     const dataToTransfer = { cantTranfer: this.acountValue + '', destinyNumber: this.acountDestiny + '', originNumber: this.acountOrigen + '' };
-    console.log(dataToTransfer);
     this.acountsService.transferToAcount(dataToTransfer).subscribe((e:any) => {
-      console.log(e)
       if(e.status === 0){
         this.dataSuccess = {
           origin: this.acountOrigen,
@@ -134,7 +124,6 @@ export class TransactionsComponent implements OnInit {
       this.tittle = 'Transacción realizada';
       this.loader = false;
     }, error => { 
-      console.log(error)
       this.loader = false;
       this.tittle = 'Transacción fallida';
     });

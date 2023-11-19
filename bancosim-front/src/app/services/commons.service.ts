@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { FinalUser } from '../model/FinalUser.interface';
 import { FinalUserService } from './final-user.service';
 
 @Injectable({
@@ -13,7 +12,6 @@ export class CommonsService {
   public validIntoSession(): void {
     const token = sessionStorage.getItem('token') ? atob(sessionStorage.getItem('token')!) : false;
     if (!token) {
-      console.log(token);
       sessionStorage.clear();
       this.router.navigate(['']);
     }
@@ -25,8 +23,6 @@ export class CommonsService {
   }
 
   public goTo(dir: string, data?: any) {
-    console.log(dir)
-    console.log(data)
     if(!data) {
       this.router.navigate([dir]);
     } else {

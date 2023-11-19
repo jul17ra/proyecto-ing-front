@@ -14,6 +14,6 @@ export class FinalUserService {
   }
 
   getUserIntoSession() {
-    return this.httpCore.apiPost('/user/getUserToken','')
+    return this.httpCore.apiGet('/user/getUserToken')
   }
 }

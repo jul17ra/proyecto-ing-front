@@ -29,13 +29,14 @@ export class InitComponent implements OnInit {
     this.commonsService.validIntoSession(); //Valido que continuo dentro de la sesión.
     if (this.token) {
       await this.userService.getUserIntoSession().subscribe(async (res: any) => {
-        console.log(res);
         this.finalUser = res;
         await this.userAccountService.getUserAccounts(this.finalUser).subscribe((res: any) => {
-          console.log(res);
           this.userAccounts = res as Array<IUserAccount>;
         });
-      },(err) => {console.log(err);this.commonsService.cleanDataToken();});
+      },(err) => {
+        console.log(err);
+        this.commonsService.cleanDataToken();
+      });
     }
   }
 }
