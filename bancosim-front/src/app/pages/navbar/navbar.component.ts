@@ -4,6 +4,8 @@ import { FinalUser } from 'src/app/model/FinalUser.interface';
 import { CommonsService } from 'src/app/services/commons.service';
 import { FinalUserService } from 'src/app/services/final-user.service';
 import { URLS } from '../../const/URLS';
+import { PermitRoleService } from 'src/app/services/permit-role.service';
+import { IPermit } from 'src/app/Interfaces/IPermit.interface';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,9 +16,11 @@ export class NavbarComponent implements OnInit, OnChanges{
   finalUser!: FinalUser;
   public dataUser: boolean = false;
   public URLS = URLS;
+  public permits: Array<IPermit> = []; 
   @Input() public finalUserData!: FinalUser;
 
-  constructor(public router: Router, private commonsService:CommonsService, private userService: FinalUserService) {
+  constructor(public router: Router, private commonsService:CommonsService, private userService: FinalUserService,
+    private permitRoleService: PermitRoleService) {
 
   }
 
@@ -26,6 +30,10 @@ export class NavbarComponent implements OnInit, OnChanges{
       if(this.finalUserData){
         this.finalUser = this.finalUserData // Se setea la data en una variable por si finalUserData cambia en tiempo de ejecución a undefined.
       }
+      this.permitRoleService.getPermitByToken().subscribe((res: any) => {
+        console.log('respuesta de rol: ', res);
+        this.permits = res;
+      });
     }
   }
 
@@ -45,6 +53,7 @@ export class NavbarComponent implements OnInit, OnChanges{
     localStorage.clear();
     sessionStorage.setItem('security', security!);
     this.dataUser = false;
+    this.permits = [];
     this.router.navigate([''])
   }
 
