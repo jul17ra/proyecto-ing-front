@@ -1,0 +1,30 @@
+
+table {
+    width: 100%;
+}
+
+th, td {
+  border-bottom: 1px solid #ddd;
+  color: white;
+  padding: 0 10px;
+}
+
+th {
+  background-color: goldenrod;
+  color: white;
+  height: 35px;
+}
+
+td {
+  height: 30px;
+  padding: 0 15px;
+}
+
+.btn {
+  border: 1px solid goldenrod;
+  color: white;
+  height: 32px;
+  width: 30px;
+  padding: 0;
+  margin: 2px;
+}

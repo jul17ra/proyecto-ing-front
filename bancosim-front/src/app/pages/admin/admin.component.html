@@ -1,0 +1,27 @@
+<loading-animation *ngIf="loader; else content"></loading-animation>
+<ng-template #content>
+  <div class="title">
+    <label for="" class="title-accounts-cards">Administracion</label>
+  </div>
+  <!-- Roles -->
+  <div class="table-space">
+    <app-table-role></app-table-role>
+  </div>
+  <!-- Usuarios -->
+  <div class="table-space">
+    <app-table-user></app-table-user>
+  </div>
+  <!-- Permisos -->
+  <div class="table-space">
+    <app-table-permit></app-table-permit>
+  </div>
+  <!-- Permisos - Roles -->
+  <div class="table-space">
+    <app-table-permit-roles></app-table-permit-roles>
+  </div>
+  <!-- Parameter -->
+  <div class="table-space">
+    <app-table-parameter></app-table-parameter>
+  </div>
+
+</ng-template>

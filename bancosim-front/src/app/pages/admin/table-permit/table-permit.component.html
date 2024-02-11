@@ -1,0 +1,16 @@
+<table>
+    <tr>
+      <th>Permiso</th>
+      <th>Estado</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+    <tr *ngFor="let rol of permitData">
+      <td>{{rol.name}}</td>
+      <td><app-toggle [checkStatus]="rol.status == 'A'"></app-toggle></td>
+      <td> <button class="btn"><img width="20" height="20" src="https://img.icons8.com/ios-filled/50/FFFFFF/edit--v1.png"
+            alt="edit--v1" /></button> </td>
+      <td><button class="btn"><img width="25" height="25"
+            src="https://img.icons8.com/ios-glyphs/30/FFFFFF/filled-trash.png" alt="filled-trash" /></button></td>
+    </tr>
+  </table>

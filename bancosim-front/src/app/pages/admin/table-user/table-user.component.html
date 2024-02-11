@@ -1,0 +1,24 @@
+<table>
+    <tr>
+      <th>Nombre</th>
+      <th>Estado</th>
+      <th>Rol</th>
+      <th>Celular</th>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+    <tr *ngFor="let user of dataUsers">
+      <td>{{user.name}}</td>
+      <td><app-toggle [checkStatus]="user.state == 'A'"></app-toggle></td>
+      <td>{{user.role.name}}</td>
+      <td>{{user.cellphone}}</td>
+      <td>{{user.id}}</td>
+      <td>{{user.email}}</td>
+      <td> <button class="btn"><img width="20" height="20" src="https://img.icons8.com/ios-filled/50/FFFFFF/edit--v1.png"
+        alt="edit--v1" /></button> </td>
+  <td><button class="btn"><img width="25" height="25"
+        src="https://img.icons8.com/ios-glyphs/30/FFFFFF/filled-trash.png" alt="filled-trash" /></button></td>
+    </tr>
+</table>

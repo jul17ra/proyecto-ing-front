@@ -25,19 +25,21 @@
       <ul class="nav-links">
         <ng-container *ngFor="let permit of permits">
           <li *ngIf="permit.state === 'A'">
-            <a *ngIf="permit.children.length === 0" (click)="redirectTo(permit.url)" role="button">{{permit.name}}</a>
-            <a *ngIf="permit.children.length > 0" class="nav-item dropdown-toggle btnprincipal" href="#" id="navbarDropdown" role="button"
-              data-bs-toggle="dropdown" aria-expanded="false">{{permit.name}}</a>
-              
-                <ul class="dropdown-menu btnprincipal goldcolor" aria-labelledby="navbarDropdown">
-                  <ng-container *ngFor="let childrenPermit of permit.children">
-                  <li *ngIf="childrenPermit.state == 'A'">
-                    <a class="dropdown-item" (click)="redirectTo(childrenPermit.url)" role="button">{{childrenPermit.name}}</a>
-                  </li>
-                  <!-- <li><a class="dropdown-item" (click)="redirectTo(URLS.TRANSACTIONS+'/2')" role="button">Pagar productos</a></li> -->
-                </ng-container>
-                </ul>
-              
+            <a *ngIf="permit.children === null; else listDatos" (click)="redirectTo(permit.url)" role="button">{{permit.name}}</a>
+            <ng-template #listDatos>
+              <a *ngIf="permit.children.length > 0" class="nav-item dropdown-toggle btnprincipal" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">{{permit.name}}</a>
+                  <ul class="dropdown-menu btnprincipal goldcolor" aria-labelledby="navbarDropdown">
+                    <ng-container *ngFor="let childrenPermit of permit.children">
+                      <div>
+                        <li *ngIf="childrenPermit.state == 'A'">
+                          <a class="dropdown-item" (click)="redirectTo(childrenPermit.url)" role="button">{{childrenPermit.name}}</a>
+                        </li>
+                      </div>
+                    <!-- <li><a class="dropdown-item" (click)="redirectTo(URLS.TRANSACTIONS+'/2')" role="button">Pagar productos</a></li> -->
+                  </ng-container>
+                  </ul>
+                </ng-template> 
           </li>
         </ng-container>
           <li *ngIf="!dataUser"><a (click)="registerRedirect()" role="button">Registro</a></li>

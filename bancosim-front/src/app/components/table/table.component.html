@@ -1,0 +1,14 @@
+<table>
+    <tr>
+        <ng-container *ngFor="let th of dataTable.title!">
+            <th>{{th}}</th>
+        </ng-container>
+    </tr>
+    <ng-container *ngFor="let th of dataTable.tr!">
+        <tr>
+            <ng-container *ngFor="let td of th.td!">
+                <td>{{td}}</td>
+            </ng-container>
+        </tr>
+    </ng-container>
+  </table>

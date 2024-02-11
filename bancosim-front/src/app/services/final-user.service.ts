@@ -7,13 +7,19 @@ import { IUserLoginRequest } from '../Interfaces/UserLogin.interface'
 })
 export class FinalUserService {
 
+  private API = '/user/'
+
   constructor(private httpCore: HttpService) { }
 
   login(userLoginRequest: IUserLoginRequest) {
-     return this.httpCore.apiAuthentication('/user/login', userLoginRequest);
+     return this.httpCore.apiAuthentication(this.API.concat('login'), userLoginRequest);
   }
 
   getUserIntoSession() {
-    return this.httpCore.apiGet('/user/getUserToken')
+    return this.httpCore.apiGet(this.API.concat('getUserToken'))
+  }
+
+  getUsersByRoleToken(){
+    return this.httpCore.apiGet(this.API.concat('getUsersByRoleToken'))
   }
 }
