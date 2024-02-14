@@ -10,10 +10,16 @@
     <div class="items"> <label for="" id="title_card" class="label_title">{{account.acount.name}}</label> </div>
     <label class="label_num_account disp" for="" id="num_account">{{account.acount.number | accountNumber}}</label>
     <label class="label_balance" for="" id="saldo_init">Saldo disponible:</label>
+    <span class="logo-chip">
+      <img src="../../../assets/images/chip.png" alt="" class="chip" />
+    </span>
     <br>
     <img [src]="account.acount.typeAcount.icon" class="icon_account" alt="">
     <label class="label_title disp" for="" id="saldo_disp">$ {{account.acount.amount | valueTx}}</label>
     <div class="options_cards">
+      <span class="logo">
+        <img src="../../../assets/images/logo-master.png" alt="" />
+      </span>
         <button (click)="commonsService.goTo(URLS.TRANSACTIONS+'/1')" class="option">Transferir</button>
         <button (click)="commonsService.goTo(URLS.MOVEMENTS, {accountMov: account.acount.number})" class="option">Movimientos</button>
     </div>

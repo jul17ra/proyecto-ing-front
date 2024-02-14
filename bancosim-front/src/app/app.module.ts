@@ -27,6 +27,15 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { SuccessResumeComponent } from './components/success-resume/success-resume.component';
 import { AccountNumberPipe } from './components/account-number.pipe';
 import { ValueTxPipe } from './components/value-tx.pipe';
+import { ParametersComponent } from './components/parameters/parameters.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { ToggleComponent } from './components/toggle/toggle.component';
+import { TableComponent } from './components/table/table.component';
+import { TableRoleComponent } from './pages/admin/table-role/table-role.component';
+import { TableUserComponent } from './pages/admin/table-user/table-user.component';
+import { TablePermitComponent } from './pages/admin/table-permit/table-permit.component';
+import { TablePermitRolesComponent } from './pages/admin/table-permit-roles/table-permit-roles.component';
+import { TableParameterComponent } from './pages/admin/table-parameter/table-parameter.component';
 
 
 @NgModule({
@@ -48,7 +57,16 @@ import { ValueTxPipe } from './components/value-tx.pipe';
     LoadingComponent,
     SuccessResumeComponent,
     AccountNumberPipe,
-    ValueTxPipe
+    ValueTxPipe,
+    ParametersComponent,
+    AdminComponent,
+    ToggleComponent,
+    TableComponent,
+    TableRoleComponent,
+    TableUserComponent,
+    TablePermitComponent,
+    TablePermitRolesComponent,
+    TableParameterComponent
   ],
   imports: [
     BrowserModule,

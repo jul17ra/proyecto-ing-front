@@ -84,18 +84,35 @@
 }
 
 .icon_account {
-    height: 75px;
+    height: 70px;
 }
 
 .options_cards {
-    padding-left: 80px;
+    display: flex;
 }
 
 .option {
-    padding: 4px;
+    padding: 6px;
     background-color: #1B2631;
     color: #CACFD2;
     border-radius: 7px;
     margin-left: 5px;
     border-style: none;
+    height: 30px;
+}
+
+.header {
+    display: flex;
+}
+.logo {
+    padding-right: 40px;
+}
+
+.logo img {
+    width: 35px;
+}
+
+.logo-chip img {
+    width: 45px;
+    margin-left: 20px;
 }

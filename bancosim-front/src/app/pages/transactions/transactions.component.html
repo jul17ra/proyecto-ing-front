@@ -1,29 +1,3 @@
-<!-- <p class="descriptiontransaction">{{tittle}}</p>
-<div class="contenedor">
-  <form class="was-validated" [formGroup]="formtransaction">
-    <div class="mb-3">
-      <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Cuenta de
-        Origen</label>
-      <input type="number" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" name="origin" required
-        formControlName="origen">
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Cuenta
-        Destino</label>
-      <input type="number" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" name="destiny" required
-        formControlName="destino">
-    </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1 validationTextarea" class="form-label"
-        style="font-weight: bold">Valor</label>
-      <input type="number" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" name="value" required
-        formControlName="valor">
-    </div>
-    <div class="mb-3">
-      <button class="btn btn-dark" type="submit" (click)="submit()">Transaferir</button>
-    </div>
-  </form>
-</div> -->
 <loading-animation *ngIf="loader; else content"></loading-animation>
 <ng-template #content>
   <ng-container *ngIf="!txSuccess; else success">

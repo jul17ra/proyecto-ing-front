@@ -9,6 +9,7 @@ import { EditaccountComponent } from './pages/editaccount/editaccount.component'
 import { InitComponent } from './pages/init/init.component';
 import { URLS } from './const/URLS';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { AdminComponent } from './pages/admin/admin.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: `${URLS.INIT}`,
     component: InitComponent
+  },
+  {
+    path: `${URLS.ADMIN}`,
+    component: AdminComponent
   }
 ];
 
