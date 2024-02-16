@@ -33,6 +33,7 @@ export class HttpService {
   apiPost(api: string, data?:any) {
     this.token = atob(sessionStorage.getItem('token') + '')
     console.log('--------- [', api, '] ---------');
+    console.log('--------- [', data, '] ---------');
     return this.http
       .post(`${environment.api}${api}`, data, {
         headers: this.getHeaders()
@@ -45,6 +46,8 @@ export class HttpService {
      'Access-Control-Allow-Methods': '*',
     }
     console.log(this.commons.getParameterSecurity())
+    // console.log("TOKEN")
+    // console.log(atob(sessionStorage.getItem('token') + ''))
     if(this.commons.getParameterSecurity() === 'level-attack-high-security' && this.token !=='ée'){
       headers['X-CSRF-TOKEN'] = `${this.token}`;
     }
