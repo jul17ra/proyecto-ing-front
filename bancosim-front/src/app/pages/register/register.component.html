@@ -1,5 +1,16 @@
   <div class="contenedor">
-    <form class="was-validated" [formGroup]="formregister">
+    <form class="was-validated" [formGroup]="formregister" (ngSubmit)="submitRegister()">
+
+      <div class="mb-3">
+        <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Nombre</label>
+        <input type="text" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" required
+          formControlName="name">
+      </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Identifiación</label>
+        <input type="text" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" required
+          formControlName="identification">
+      </div>
       <div class="mb-3">
         <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Email*</label>
         <input type="email" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" required
@@ -11,10 +22,16 @@
           formControlName="password">
       </div>
       <div class="mb-3">
-        <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Monto inicial Cuenta de Ahorros</label>
-        <input type="number" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea"   required
-          formControlName="ahorro">
+        <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Celular</label>
+        <input type="text" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" required
+          formControlName="cellphone">
       </div>
+      <div class="mb-3">
+        <label for="exampleFormControlInput1 validationTextarea" class="form-label" style="font-weight: bold">Dirección</label>
+        <input type="text" class="form-control in-invalid" id="exampleFormControlInput1 validationTextarea" required
+          formControlName="address">
+      </div>
+
       <div class="mb-3">
         <button class="btn btn-dark" type="submit">Registrarse</button>
       </div>

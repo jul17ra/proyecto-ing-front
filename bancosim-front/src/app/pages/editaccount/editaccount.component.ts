@@ -38,7 +38,7 @@ export class EditaccountComponent implements OnInit {
         password: ['', Validators.required],
       }
     )
-    this.password = this.formPass.controls['password']
+    // this.password = this.formPass.controls['password']
 
   }
 
