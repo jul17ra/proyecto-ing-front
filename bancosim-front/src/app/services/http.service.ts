@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { IUserLoginRequest } from '../Interfaces/UserLogin.interface';
 import { CommonsService } from './commons.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,7 @@ export class HttpService {
     console.log('--------- [', api, '] ---------');
     return this.http
       .post(`${environment.api}${api}`, data, {
-        headers: this.getHeaders()
+        headers: this.getHeaders(), withCredentials: true
       })
   }
 

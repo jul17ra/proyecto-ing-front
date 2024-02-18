@@ -1,5 +1,15 @@
 <loading-animation *ngIf="loader; else content"></loading-animation>
 <ng-template #content>
+  <div class="square">
+    <p class="subtitle">Seleccione la cuenta de origen</p>
+    <select name="originAccount" id="selectAcount" [(ngModel)]="accountOrigin" class="select-value">
+      <option selected disabled>Seleccione cuenta</option>
+      <ng-container *ngFor="let acount of listAcounts">
+        <option [value]="acount.number">{{acount.number}}</option>
+      </ng-container>
+    </select>
+    <button class="btn-search" (click)="clickFinal()">Buscar movimientos</button>
+  </div>
   <p class="descriptiontransaction">Movimientos de la cuenta {{accountOrigin | accountNumber}}</p>
   <div class="contenedor">
     <table class="table">

@@ -1,9 +1,11 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, TemplateRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IMovementsRequestDTO } from 'src/app/Interfaces/IMovementsRequestDTO.interface';
 import { URLS } from 'src/app/const/URLS';
 import { TYPERTX } from 'src/app/const/TYPETX';
 import { MovementsService } from 'src/app/services/movements.service';
+import { AcountsService } from 'src/app/services/acounts.service';
+import { IDataExpansionPanel } from 'src/app/Interfaces/IDataExpansionPanel.interface';
 
 @Component({
   selector: 'app-movimientos',
@@ -18,8 +20,15 @@ export class MovimientosComponent implements OnInit, OnChanges {
   public URLS = URLS;
   public accountOrigin!: string;
   public TYPERTX = TYPERTX;
+  listAcounts!: any;
+  dataPanel!: IDataExpansionPanel;
 
-  constructor(private movementsService: MovementsService, private route: Router) {
+  @ViewChild('contentOriginAccount') contentOriginAccount!: TemplateRef<any>;
+
+  constructor(private movementsService: MovementsService,
+    private route: Router,
+    private acountsService: AcountsService,
+    private changeDetectorRef: ChangeDetectorRef) {
     this.loader = true;
     try {
       const accountMov = this.route.getCurrentNavigation()?.extras.queryParams!["accountMov"];
@@ -30,8 +39,6 @@ export class MovimientosComponent implements OnInit, OnChanges {
           this.loader = false;
         }
         );
-      } else {
-        this.route.navigate([URLS.INIT]);
       }
     } catch (error) {
       this.route.navigate([URLS.INIT]);
@@ -39,7 +46,14 @@ export class MovimientosComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    this.getUserAccountsWithToken();
+  }
 
+  getUserAccountsWithToken(): void{
+    this.acountsService.getAccountsWithToken().subscribe(e => {
+      this.listAcounts = e;
+      this.loader = false;
+    })
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -49,6 +63,15 @@ export class MovimientosComponent implements OnInit, OnChanges {
       }
       );
     }
+  }
+
+  clickFinal(){
+    this.loader = true;
+    this.movementsService.getMovementsByAccount(this.accountOrigin).subscribe((res: any) => {
+      this.movimientos = res;
+      this.loader = false;
+    });
+    this.changeDetectorRef.detectChanges();
   }
 
 }

@@ -14,4 +14,11 @@ export class ParametersService {
     }
     return this.httpCore.apiPost('/params/securityParamsActive', genericRequest);
   }
+
+  public getSecurityParams(of: string){
+    let genericRequest = {
+      of
+    }
+    return this.httpCore.apiPost('/params/securityParams', genericRequest);
+  }
 }

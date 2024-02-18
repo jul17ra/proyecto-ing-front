@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ParametersService } from 'src/app/services/parameters.service';
 
 @Component({
   selector: 'app-table-parameter',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableParameterComponent implements OnInit {
 
-  constructor() { }
+  public dataParameterSecurity!: Array<any>;
+
+  constructor(private parameterService: ParametersService) { }
 
   ngOnInit(): void {
+
+    this.parameterService.getSecurityParams('SEGURITY').subscribe(
+      (res: any) => {
+        this.dataParameterSecurity = res;
+        console.log(this.dataParameterSecurity)
+      }
+    );
   }
 
 }

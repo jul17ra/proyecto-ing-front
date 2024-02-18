@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     const token = localStorage.getItem('token') ? atob(localStorage.getItem('token')!): false;
     if(token){
-      this.userService.getUserIntoSession().subscribe(() => 
-        this.router.navigate(['init'])
+      this.userService.getUserIntoSession().subscribe(() => {}
+        //this.router.navigate(['init'])// TODO se debe validar el token con un servicio y realizar una nueva sesion para acceder si el token es correcto ha mantenido la sesion.
       );
     }
   }
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       sessionStorage.setItem('token', btoa(dataRes.auth));
       if(this.keepSession){
         localStorage.setItem('token', btoa(dataRes.auth));
-        this.cookieService.set('token', btoa(dataRes.auth), 1, '/');
+        this.cookieService.set('token', dataRes.auth, 1, '/');
       }
       this.finalUser = dataRes.finalUser;
       this.loadAnimation = false;

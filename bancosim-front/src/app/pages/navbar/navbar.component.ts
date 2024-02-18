@@ -6,6 +6,7 @@ import { FinalUserService } from 'src/app/services/final-user.service';
 import { URLS } from '../../const/URLS';
 import { PermitRoleService } from 'src/app/services/permit-role.service';
 import { IPermit } from 'src/app/Interfaces/IPermit.interface';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -19,8 +20,11 @@ export class NavbarComponent implements OnInit, OnChanges{
   public permits: Array<IPermit> = []; 
   @Input() public finalUserData!: FinalUser;
 
-  constructor(public router: Router, private commonsService:CommonsService, private userService: FinalUserService,
-    private permitRoleService: PermitRoleService) {
+  constructor(public router: Router,
+    private commonsService:CommonsService,
+    private userService: FinalUserService,
+    private permitRoleService: PermitRoleService,
+    private cookieService: CookieService) {
 
   }
 
@@ -42,7 +46,7 @@ export class NavbarComponent implements OnInit, OnChanges{
     const token = sessionStorage.getItem('token');
     this.userService.getUserIntoSession().subscribe((res:any) => {
       this.finalUser = res;
-      this.dataUser = this.finalUser ? true : false;// Se setea la data en una variable por si finalUserData cambia en tiempo de ejecución a undefined.
+      this.dataUser = this.finalUser.id !== 0 ? true : false;// Se setea la data en una variable por si finalUserData cambia en tiempo de ejecución a undefined.
       }
     );
   }
@@ -51,6 +55,7 @@ export class NavbarComponent implements OnInit, OnChanges{
     const security = sessionStorage.getItem('security');
     sessionStorage.clear();
     localStorage.clear();
+    this.cookieService.deleteAll();
     sessionStorage.setItem('security', security!);
     this.dataUser = false;
     this.permits = [];
@@ -58,9 +63,11 @@ export class NavbarComponent implements OnInit, OnChanges{
   }
 
   redirectTo(from: string): void {
+    console.log('from:', from);
     if (this.finalUser) {
-      this.router.navigate([from], {queryParams: {acount: '12312'}, state: {data: 'sadsad'}});
+      this.router.navigate([from], {queryParams: {acount: '12312'}});
     } else {
+      this.dataUser = false;
       this.router.navigate(['']);
     }
   }

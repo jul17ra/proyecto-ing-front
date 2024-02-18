@@ -1,9 +1,9 @@
-
 table {
-    width: 100%;
+  width: 100%;
 }
 
-th, td {
+th,
+td {
   border-bottom: 1px solid #ddd;
   color: white;
   padding: 0 10px;
@@ -21,10 +21,15 @@ td {
 }
 
 .btn {
-    border: 1px solid goldenrod;
-    color: white;
-    height: 32px;
-    width: 30px;
-    padding: 0;
-    margin: 2px;
-  }
+  border: 1px solid goldenrod;
+  color: white;
+  height: 32px;
+  width: 30px;
+  padding: 0;
+  margin: 2px;
+}
+
+h1 {
+  color: white;
+  padding: 7px 7px;
+}
