@@ -16,7 +16,6 @@ export class EditaccountComponent implements OnInit {
   public formEmailPass: FormGroup
   public formPass: FormGroup
   public email: AbstractControl
-  public password: AbstractControl
   //interfaces
   editEmail!:IEditEmailRequest
 
@@ -28,18 +27,14 @@ export class EditaccountComponent implements OnInit {
     this.formEmailPass = this.formBuilder.group(
       {
         email: ['', Validators.required],
-        password: ['', Validators.required],
       }
     )
     this.email = this.formEmailPass.controls['email']
-    this.password = this.formEmailPass.controls['password']
     this.formPass = this.formBuilder.group(
       {
         password: ['', Validators.required],
       }
     )
-    // this.password = this.formPass.controls['password']
-
   }
 
   ngOnInit(): void {
@@ -61,7 +56,6 @@ if (this.formPass.valid) {
     if (this.formEmailPass.valid) {
       const dataUserEdit: IEditEmailRequest = {
         email: this.formEmailPass.controls['email'].value,
-        password: this.formEmailPass.controls['password'].value
       };
 
       this.editService.editEmail(dataUserEdit).subscribe((res: any) => {
