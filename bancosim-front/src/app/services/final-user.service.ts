@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import { IUserLoginRequest } from '../Interfaces/UserLogin.interface'
-
+//Editar
+import { IEditPassRequest } from '../Interfaces/IEditPass.interface'
+import { IEditEmailRequest } from '../Interfaces/IEditEmail.interface'
+import { IUserRegister } from '../Interfaces/IUserRegister.interface'
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +17,17 @@ export class FinalUserService {
   login(userLoginRequest: IUserLoginRequest) {
      return this.httpCore.apiAuthentication(this.API.concat('login'), userLoginRequest);
   }
-
+  //Register
+  register(userRegisterRequest: IUserRegister) {
+    return this.httpCore.apiPost(this.API.concat('registerUser'), userRegisterRequest);
+ }
+  //editar contraseña y correo
+  editEmail(editEmailRequest: IEditEmailRequest) {
+    return this.httpCore.apiPost(this.API.concat('editemail'), editEmailRequest);
+  }
+  editPass(editPassRequest: IEditPassRequest) {
+    return this.httpCore.apiPost(this.API.concat('editpass'), editPassRequest);
+  }
   getUserIntoSession() {
     return this.httpCore.apiGet(this.API.concat('getUserToken'))
   }
