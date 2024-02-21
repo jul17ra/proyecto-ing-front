@@ -9,6 +9,7 @@ import { ParametersService } from 'src/app/services/parameters.service';
 export class TableParameterComponent implements OnInit {
 
   public dataParameterSecurity!: Array<any>;
+  public dataParameters!: Array<any>;
 
   constructor(private parameterService: ParametersService) { }
 
@@ -18,6 +19,12 @@ export class TableParameterComponent implements OnInit {
       (res: any) => {
         this.dataParameterSecurity = res;
         console.log(this.dataParameterSecurity)
+      }
+    );
+    this.parameterService.getOthersParams('SEGURITY').subscribe(
+      (res: any) => {
+        this.dataParameters = res;
+        console.log(this.dataParameters)
       }
     );
   }
