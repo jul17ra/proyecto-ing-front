@@ -1,6 +1,6 @@
 {
   "name": "bancosim-front",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -20,6 +20,8 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
+    "apexcharts": "^3.20.0",
+    "ngx-apexcharts": "^0.4.9",
     "ngx-cookie-service": "^15.0.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",

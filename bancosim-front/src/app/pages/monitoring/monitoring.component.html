@@ -1,0 +1,42 @@
+<div class="cards">
+    <div *ngFor="let info of requestDataInfo" class="card-content" [style]="'background:' + info.color">
+        <div class="content">
+            <img width="30" height="30" [src]="info.img">
+            <span> {{info.status}} response: </span>
+            <span> {{info.count}}</span>
+        </div>
+    </div>
+</div>
+
+<div style="display: block">
+    <!-- <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions"></highcharts-chart> -->
+  </div>
+<div class="table-space">
+    <div>
+        <h1> Datos de Peticiones</h1>
+    </div>
+    <table>
+        <tr>
+            <th>Metodo</th>
+            <th>Origin</th>
+            <th>Destino</th>
+            <th>Status http</th>
+            <th>Status request</th>
+            <th>Tiempo tomado [ms]</th>
+            <!-- <th>Fecha incial</th>
+            <th>Fecha final</th> -->
+            <th>Nivel de seguridad</th>
+        </tr>
+        <tr *ngFor="let request of requestData">
+            <td>{{request.dataRequest}}</td>
+            <td>{{request.origin}}</td>
+            <td>{{request.destiny}}</td>
+            <td [style]="{color: request.statusHttp!=200 ? 'red' : 'green'}">{{request.statusHttp}}</td>
+            <td>{{request.statusRequest}}</td>
+            <td>{{request.timeTaken}}</td>
+            <!-- <td>{{request.dateTimeStart | date: 'dd/MM/yyyy HH:mm:ss.SSS'}}</td>
+            <td>{{request.dateTimeFinish | date: 'dd/MM/yyyy HH:mm:ss.SSS'}}</td> -->
+            <td>{{request.securityLevel}}</td>
+        </tr>
+    </table>
+</div>

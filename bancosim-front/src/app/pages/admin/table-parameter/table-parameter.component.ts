@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ParametersService } from 'src/app/services/parameters.service';
+import { RequestService } from 'src/app/services/request.service';
 
 @Component({
   selector: 'app-table-parameter',
@@ -27,6 +28,7 @@ export class TableParameterComponent implements OnInit {
         console.log(this.dataParameters)
       }
     );
+
   }
 
 }

@@ -6,5 +6,6 @@ export const URLS = {
     REGISTER: 'register',
     MOVEMENTS: 'movimientos',
     EDIT: 'edit',
-    ADMIN: 'admin'
+    ADMIN: 'admin',
+    MONITORING: 'monitoring'
 }

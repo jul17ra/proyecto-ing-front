@@ -10,6 +10,7 @@ import { InitComponent } from './pages/init/init.component';
 import { URLS } from './const/URLS';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AdminComponent } from './pages/admin/admin.component';
+import { MonitoringComponent } from './pages/monitoring/monitoring.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: `${URLS.ADMIN}`,
     component: AdminComponent
+  },
+  {
+    path: `${URLS.MONITORING}`,
+    component: MonitoringComponent
   }
 ];
 

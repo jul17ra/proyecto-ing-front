@@ -27,7 +27,7 @@ export class HttpService {
     this.token = atob(sessionStorage.getItem('token') + '')
     return this.http
       .get(environment.api + api, {
-        headers: this.getHeaders()
+        headers: this.getHeaders(), withCredentials: true
       });
   }
 
@@ -47,8 +47,6 @@ export class HttpService {
      'Access-Control-Allow-Methods': '*',
     }
     console.log(this.commons.getParameterSecurity())
-    // console.log("TOKEN")
-    // console.log(atob(sessionStorage.getItem('token') + ''))
     if(this.commons.getParameterSecurity() === 'level-attack-high-security' && this.token !=='ée'){
       headers['X-CSRF-TOKEN'] = `${this.token}`;
     }

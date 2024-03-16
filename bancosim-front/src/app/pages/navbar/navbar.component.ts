@@ -46,7 +46,14 @@ export class NavbarComponent implements OnInit, OnChanges{
     const token = sessionStorage.getItem('token');
     this.userService.getUserIntoSession().subscribe((res:any) => {
       this.finalUser = res;
-      this.dataUser = this.finalUser.id !== 0 ? true : false;// Se setea la data en una variable por si finalUserData cambia en tiempo de ejecución a undefined.
+      if(res !== null){
+        try {
+          this.dataUser = this.finalUser.id !== 0 ? true : false;
+        } catch (error) {
+          this.dataUser = false;
+        }
+      }
+      this.dataUser ? this.router.navigate([URLS.INIT]) : this.router.navigate([URLS.LOGIN])
       }
     );
   }

@@ -1,0 +1,73 @@
+
+table {
+    width: 100%;
+}
+
+th, td {
+  border-bottom: 1px solid #ddd;
+  color: white;
+  padding: 0 10px;
+}
+
+th {
+  background-color: goldenrod;
+  color: white;
+  height: 35px;
+}
+
+td {
+  height: 30px;
+  padding: 0 15px;
+}
+
+.btn {
+    border: 1px solid goldenrod;
+    color: white;
+    height: 32px;
+    width: 30px;
+    padding: 0;
+    margin: 2px;
+  }
+
+h1 {
+    color: white;
+    padding: 7px 7px;
+}
+
+.title {
+    padding: 50px 0 0 10em;
+}
+
+.title-accounts-cards{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 30px;
+    font-weight: 500px;
+    color: #CACFD2;
+    margin-bottom: .5em;
+}
+
+.table-space {
+    margin: 27px 14px;
+    border: 4px solid goldenrod;
+    border-radius: 8px;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 230px;
+    margin: 20px 40px;
+    border-radius: 8px;
+}
+
+.content {
+    padding: 40px 10px;
+}
