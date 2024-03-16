@@ -37,7 +37,7 @@ import { TablePermitComponent } from './pages/admin/table-permit/table-permit.co
 import { TablePermitRolesComponent } from './pages/admin/table-permit-roles/table-permit-roles.component';
 import { TableParameterComponent } from './pages/admin/table-parameter/table-parameter.component';
 import { MonitoringComponent } from './pages/monitoring/monitoring.component';
-import { NgxApexchartsModule } from 'ngx-apexcharts';
+// import { NgxApexchartsModule } from 'ngx-apexcharts';
 
 
 
@@ -83,7 +83,7 @@ import { NgxApexchartsModule } from 'ngx-apexcharts';
     MatCheckboxModule,
     MatDialogModule,
     HttpClientModule,
-    NgxApexchartsModule
+    // NgxApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
