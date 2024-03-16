@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "bancosim-front:build:production"
+              "buildTarget": "bancosim-front:build:production"
             },
             "development": {
-              "browserTarget": "bancosim-front:build:development"
+              "buildTarget": "bancosim-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "bancosim-front:build"
+            "buildTarget": "bancosim-front:build"
           }
         },
         "test": {
