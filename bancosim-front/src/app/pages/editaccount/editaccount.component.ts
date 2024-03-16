@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms'
 //Interfaces
 import { IEditEmailRequest } from "src/app/Interfaces/IEditEmail.interface";
 import { IEditPassRequest } from "src/app/Interfaces/IEditPass.interface";
@@ -13,15 +13,15 @@ import { FinalUserService } from "src/app/services/final-user.service";
 })
 export class EditaccountComponent implements OnInit {
 
-  public formEmailPass: FormGroup
-  public formPass: FormGroup
+  public formEmailPass: UntypedFormGroup
+  public formPass: UntypedFormGroup
   public email: AbstractControl
   //interfaces
   editEmail!:IEditEmailRequest
 
   select:number =0
   constructor(
-    public formBuilder: FormBuilder,
+    public formBuilder: UntypedFormBuilder,
     public editService: FinalUserService,
   ) {
     this.formEmailPass = this.formBuilder.group(

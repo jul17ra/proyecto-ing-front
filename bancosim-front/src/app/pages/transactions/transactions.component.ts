@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, TemplateRef, ChangeDetectorRef } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { IDataExpansionPanel } from 'src/app/Interfaces/IDataExpansionPanel.interface';
 import { ITxAccounts } from 'src/app/Interfaces/ITxAccounts.interface';
@@ -12,7 +12,7 @@ import { AcountsService } from 'src/app/services/acounts.service';
 })
 export class TransactionsComponent implements OnInit {
 
-  public formtransaction: FormGroup
+  public formtransaction: UntypedFormGroup
   public origen: AbstractControl
   public destino: AbstractControl
   public valor: AbstractControl
@@ -31,7 +31,7 @@ export class TransactionsComponent implements OnInit {
   @ViewChild('contentValueTransfer') contentValueTransfer!: TemplateRef<any>;
 
   constructor(
-    public formBuilder: FormBuilder,
+    public formBuilder: UntypedFormBuilder,
     private activatedRoute: ActivatedRoute,
     private acountsService: AcountsService,
     private changeDetectorRef: ChangeDetectorRef

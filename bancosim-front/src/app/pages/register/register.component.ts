@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms'
 //Interface
 import { IUserRegister } from "../../Interfaces/IUserRegister.interface";
 import { FinalUserService } from 'src/app/services/final-user.service';
@@ -10,13 +10,13 @@ import { FinalUserService } from 'src/app/services/final-user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  public formregister: FormGroup
+  public formregister: UntypedFormGroup
   // public email: AbstractControl
   // public password: AbstractControl
   // public ahorro: AbstractControl
 
   constructor(
-    public formBuilder: FormBuilder,
+    public formBuilder: UntypedFormBuilder,
     public editService: FinalUserService,
   ) {
     this.formregister = this.formBuilder.group(

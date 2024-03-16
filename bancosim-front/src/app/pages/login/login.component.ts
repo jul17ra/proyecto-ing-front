@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { IUserLoginRequest } from 'src/app/Interfaces/UserLogin.interface';
@@ -15,13 +15,13 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class LoginComponent implements OnInit {
 
-  public formlogin: FormGroup;
+  public formlogin: UntypedFormGroup;
   @Output() eventLogin = new EventEmitter<FinalUser>();
   private keepSession = false;
   public finalUser!: FinalUser;
   public loadAnimation = false
 
-  constructor(public formBuilder: FormBuilder, public http: HttpService, private userService: FinalUserService, public router:Router, private cookieService: CookieService) {
+  constructor(public formBuilder: UntypedFormBuilder, public http: HttpService, private userService: FinalUserService, public router:Router, private cookieService: CookieService) {
   this.formlogin = this.formBuilder.group(
       {
         identification: ['', Validators.required],
