@@ -71,3 +71,7 @@ h1 {
 .content {
     padding: 40px 10px;
 }
+
+.highcharts-text-outline {
+    font-size: 1em !important;
+}

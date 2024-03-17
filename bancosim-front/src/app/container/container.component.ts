@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { LogoutComponent } from '../pages/logout/logout.component';
 import { FinalUser } from '../model/FinalUser.interface';
 

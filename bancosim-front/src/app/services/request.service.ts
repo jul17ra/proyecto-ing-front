@@ -12,10 +12,14 @@ export class RequestService {
 
   getListRequest() {
     return this.httpCore.apiGet(this.API.concat('/getDataRequests'));
- }
+  }
 
- getDataInfoRequest() {
-  return this.httpCore.apiGet(this.API.concat('/getDataInfoRequest'));
-}
- 
+  getDataInfoRequest() {
+    return this.httpCore.apiGet(this.API.concat('/getDataInfoRequest'));
+  }
+
+  getDataToChartColumn() {
+    return this.httpCore.apiGet(this.API.concat('/getDataToChartColumn'));
+  }
+
 }

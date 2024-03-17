@@ -8,13 +8,13 @@ import { AccountComponent } from './pages/account/account.component';
 import { TransactionsComponent } from './pages/transactions/transactions.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
-import { MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
+// import { MatLegacyCardModule as MatCardModule} from '@angular/material/legacy-card';
+// import { MatLegacyFormFieldModule as MatFormFieldModule} from '@angular/material/legacy-form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MovimientosComponent } from './pages/movimientos/movimientos.component';
 import { EditaccountComponent } from './pages/editaccount/editaccount.component';
-import {MatLegacyCheckboxModule as MatCheckboxModule} from '@angular/material/legacy-checkbox';
-import {MatLegacyDialogModule as MatDialogModule} from '@angular/material/legacy-dialog';
+// import {MatLegacyCheckboxModule as MatCheckboxModule} from '@angular/material/legacy-checkbox';
+// import {MatLegacyDialogModule as MatDialogModule} from '@angular/material/legacy-dialog';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InitComponent } from './pages/init/init.component';
@@ -37,8 +37,11 @@ import { TablePermitComponent } from './pages/admin/table-permit/table-permit.co
 import { TablePermitRolesComponent } from './pages/admin/table-permit-roles/table-permit-roles.component';
 import { TableParameterComponent } from './pages/admin/table-parameter/table-parameter.component';
 import { MonitoringComponent } from './pages/monitoring/monitoring.component';
-// import { NgxApexchartsModule } from 'ngx-apexcharts';
-
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDialogModule} from '@angular/material/dialog';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 
 @NgModule({
@@ -83,7 +86,7 @@ import { MonitoringComponent } from './pages/monitoring/monitoring.component';
     MatCheckboxModule,
     MatDialogModule,
     HttpClientModule,
-    // NgxApexchartsModule
+    HighchartsChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
