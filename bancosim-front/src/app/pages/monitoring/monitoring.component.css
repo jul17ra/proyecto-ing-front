@@ -72,6 +72,10 @@ h1 {
     padding: 40px 10px;
 }
 
-.highcharts-text-outline {
-    font-size: 1em !important;
+.charts {
+    display: flex;
+    padding: 20px 40px;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 50px;
 }

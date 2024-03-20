@@ -22,4 +22,8 @@ export class RequestService {
     return this.httpCore.apiGet(this.API.concat('/getDataToChartColumn'));
   }
 
+  getDataInfoPorcenRequest() {
+    return this.httpCore.apiGet(this.API.concat('/getDataInfoPorcenRequest'));
+  }
+
 }
